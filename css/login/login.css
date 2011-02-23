@@ -1,0 +1,33 @@
+html, body {
+/*	font-family: verdana, helvetica, sans-serif;*/
+/*	font-family: skolar-1,skolar-2,Cambria,Georgia,serif;*/
+	font-family: Verdana;
+	font-variant: normal;
+	font-size: 100%;
+	background:#FFF;
+	color:#000;
+	width:auto;
+	height:auto;
+}
+
+
+body {
+	font-size: 62.5%;
+}
+
+div#login h1 a {
+	background: url("./../../img/logo-small.png") right no-repeat transparent;
+/*	background: url("./../../img/small-logo-b.png") right no-repeat transparent;*/
+	display: block;
+	height: 3em;
+	outline: medium none;
+	text-indent: -9999px;
+	width: 13em;
+/*	    margin-bottom: 1.5em;*/
+}
+
+
+div#login form label {
+	color: #333;
+}
+

@@ -1,0 +1,438 @@
+/*
+Theme Name: Bukvar
+Theme URI: http://авто-букварь.рф
+Description: Avto Bukvar Theme
+Version: 0.9.9
+Author: Stanislav Yakubenko
+Author URI: http://авто-букварь.рф
+*/
+
+/* http://colorscheme.ru/#0-62dw0w0w0w0 - URL to the main color scheme of the site*/
+
+html,
+body {
+    /*    font-family: verdana, helvetica, sans-serif;*/
+    /*    font-family: skolar-1,skolar-2,Cambria,Georgia,serif;*/
+    font-family: Verdana;
+    font-variant: normal;
+    font-size: 100%;
+    background: #FFF;
+    color: #000;
+    width: auto;
+    height: auto;
+}
+
+body { font-size: 62.5% }
+
+h1,
+h2,
+h3,
+h4 { font-family: Arial }
+
+#main-wrapper { margin-top: 20px }
+
+.content-column {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#logo {
+    margin-bottom: 1em;
+}
+
+#logo a {
+    background: url("img/logo.png") right no-repeat transparent;
+    display: block;
+    height: 8.2em;
+    outline: medium none;
+    text-indent: -9999px;
+    width: 40em;
+}
+
+#logo a:hover {
+}
+
+#logo-small a {
+    background: url("img/logo-small.png") right no-repeat transparent;
+    display: block;
+    height: 4.2em;
+    outline: medium none;
+    text-indent: -9999px;
+    width: 20em;
+    margin-bottom: 1.5em;
+}
+
+#logo-small a:hover {
+}
+
+/*---------------------------- */
+
+div.wp-post-entry { margin-bottom: 40px }
+
+div.wp-post-thumbnail {
+    float: left;
+    width: 110px;
+}
+
+div.wp-post-thumbnail img {
+    padding: 2px;
+    background: #eee;
+    border: solid 1px #d3d3d3;
+
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+}
+
+div.wp-post-thumbnail img:hover { border: solid 1px #b2b2b2;background: #FFF; }
+
+div.wp-post-full-content {
+	margin-left: 120px;
+	font-size: 1em;
+}
+
+div.wp-post-full-content.no-thumb { margin-left: 0 }
+
+div.post-content { font-size: 1.3em }
+
+h3.wp-post-title,
+h1.wp-singlepost-title {
+    font-size: 2em;
+    margin-bottom: 0.1em;
+    line-height: 1.2em;
+}
+
+h3.wp-post-title a,
+h1.wp-singlepost-title a {
+    color: #BF5230;
+    text-decoration: underline;
+    font-family: Arial;
+}
+
+h1.wp-singlepost-title a { /*    text-decoration: none;_NO__DOTCOMMA__AFTER__*/  }
+
+h3.wp-post-title a:hover,
+h3.wp-singlepost-title a:hover {
+    color: #A62800;
+    text-decoration: underline;
+}
+
+div.wp-post-meta,
+div.wp-singlepost-meta {
+    font-size: 1em;
+    color: #707072;
+    margin-bottom: 5px;
+}
+
+div.wp-post-meta a,
+div.wp-singlepost-meta a {
+/*    color: #2B4181;*/
+    color: #4778d4;
+    font-family: Arial;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+div.wp-post-meta a:hover,
+div.wp-singlepost-meta a:hover { color: #333 }
+
+a.comments-link {
+    color: #666;
+    padding-left: 18px;
+    background: url('img/comment_reply.png') left no-repeat;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a.comments-link:hover { background: url('img/comment_reply.png') left no-repeat #eee }
+
+.post-content a.more-link {
+    color: #5d8dfc;
+
+    text-decoration: underline;
+    font-weight: 400;
+    font-size: 1em;
+
+/*    font-family: "PT Sans";*/
+
+}
+
+.post-content a.more-link:hover { color: #333 }
+
+.post-content p.more-text {
+    line-height: 10px;
+    text-align: right;
+}
+
+div.wp-post-entry-featured {
+    width: 90%;
+    text-align: right;
+    margin-bottom: 30px;
+}
+
+div.wp-post-thumbnail-featured { }
+
+div.wp-post-thumbnail-featured img { margin-bottom: 0em }
+
+h3.wp-post-title-featured {
+    font-size: 1.7em;
+    margin-bottom: 0em;
+    text-shadow: 0px 1px 0px #000;
+}
+
+h3.wp-post-title-featured a {
+    color: #FFF;
+    background: #6D87D6;
+    font-family: 'Arial';
+    text-decoration: none;
+    padding: 4px;
+    font-weight: bold;
+}
+
+h3.wp-post-title-featured a:hover { text-decoration: underline }
+
+div.wp-post-full-content-featured {
+    font-size: 1.2em;
+    margin-top: 0em;
+    font-family: Arial;
+}
+
+h4#latest-posts-title {
+    font-family: Arial;
+    font-size: 2em;
+    color: #333;
+}
+
+div.incategory-entry { width: 95% }
+
+div.incategory-entry .wp-post-thumbnail { float: right }
+
+div.incategory-entry .wp-post-full-content {
+    margin-left: 0px;
+    margin-right: 120px;
+}
+
+div.incategory-entry .wp-post-title { }
+
+.wp-entry-author-info {
+    margin-bottom: 20px;
+    border-bottom: solid 1px #efefef;
+    display: inline-block;
+    width: 98%;
+    margin-bottom: 10px;
+}
+
+.author-bio-avatar {
+    float: left;
+    width: 70px;
+    margin-bottom: 10px;
+}
+
+.author-bio-avatar img { }
+
+.author-bio-text {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #666;
+    font-family: Verdana;
+}
+
+.author-bio-text h4 {
+    margin-bottom: 2px;
+    font-size: 1.4em;
+    color: #333;
+}
+
+.author-bio-text a { color: #09853c }
+
+/* ----------------------------------------- */
+
+h3.wp-singlepost-title { font-size: 2em }
+
+div.wp-singlepost-entry {
+    font-size: 1em;
+    width: 95%;
+}
+
+div.wp-singlepost-meta { margin-bottom: 1.2em }
+
+div.wp-singlepost-thumb { margin-bottom: 1.2em }
+
+div.wp-singlepost-content { font-size: 1.3em }
+
+h3.category-title { }
+
+span.single-cat-title { text-align: center }
+
+div.latest-posts-column {
+    padding: 8px;
+    padding-left: 20px;
+    border-left: solid 1px #eee;
+}
+
+div#search-form-wrap {
+    margin-bottom: 25px;
+    /*    border-bottom: solid 1px #d3d3d3;;;
+    padding-bottom: 1.2em;*/
+}
+
+div#search-form-wrap label { display: none }
+
+input#s {
+    width: 250px;
+    font-size: 1.2em;
+    /*    line-height: 1.3em;*/
+    font-weight: bold;
+}
+
+input#searchsubmit { font-weight: 600 }
+
+/* ------------- PAGINATION ------------ */
+
+div.navigation-pages { margin-bottom: 20px }
+
+.wp-paginate { }
+
+.wp-paginate li {
+    margin-left: 0px;
+    font-size: 1.2em;
+}
+
+span.page.current { border: solid 1px #d3d3d3 }
+
+/* --------------- PAGINATION END -------- */
+
+div.menu-hr-box {
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: solid 1px #EEEEEE;
+}
+
+div.menu-hr-box.left { text-align: left }
+
+div.menu-hr-box ul.default-hr-box-menu {
+    display: inline;
+    list-style: none;
+}
+
+div.menu-hr-box ul.default-hr-box-menu li {
+    list-style: none;
+    display: inline;
+    margin: 0 15px 0 0;
+    height: 30px;
+}
+
+div.menu-hr-box ul.default-hr-box-menu li a {
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 30px;
+    text-transform: uppercase;
+    padding: 0 8px 0 8px;
+    font-size: 1.1em;
+    font-family: Verdana;
+    color: #333;
+}
+
+div.menu-hr-box ul.default-hr-box-menu li:hover { background: #FFF }
+
+div.menu-hr-box ul.default-hr-box-menu li a:hover { color:#333;background: #eee;text-shadow:0px 0px 4px #a0bcfd; }
+
+div.menu-hr-box ul.default-hr-box-menu li.current-menu-item a {
+    text-decoration: underline;
+    /*    color: #6D87D6;*/
+}
+
+div#sidebar {
+    padding: 0.8em;
+    border-left: solid 1px #eee;
+    font-family: Arial;
+}
+
+li.widget-container {
+    list-style: none;
+    margin-left: 1em;
+    font-size: 1.7em;
+}
+
+li.widget-container ul { font-size: 0.8em }
+
+li.widget-container ul li {
+    list-style: none;
+    margin-left: 0.5em;
+}
+
+li.widget-container ul li a {
+    color: #2B4181;
+    font-size: 0.9em;
+}
+
+li.widget-container ul li a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+.prev-next-posts {
+    margin-top: 1em;
+    margin-bottom: 2em;
+    width: 100% !important;
+    border-bottom: dotted 1px #eee;
+    padding-bottom: 2em;
+}
+
+.prev-next-posts a {
+    color: #2B4181;
+    font-size: 1.2em;
+}
+
+.prev-post-span {
+    width: 50%;
+    display: inline-block;
+    text-align: left;
+}
+
+.next-post-span {
+    text-align: right;
+    display: inline-block;
+    width: 46%;
+}
+
+#footer {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    color: #d3d3d3;
+}
+
+/* -------- OTHER -------- */
+
+.error-div { font-size: 1.2em;background: lightyellow;padding:0.6em; }
+
+
+div#login-box {
+	margin-bottom: 1.2em;
+/*	border-bottom: solid 1px #eee;*/
+	padding-bottom: 0.6em;
+	font-size: 1em;
+	font-weight: bold;
+	color: #666;
+	text-transform: uppercase;
+}
+
+.login-links {
+	list-style: none;
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+.login-links li {
+	margin: 0; display: inline;
+}
+
+
+.login-links li a {
+	text-transform: uppercase;
+	font-size: 1em;
+	font-weight: bold;
+	color: #09853c;
+}

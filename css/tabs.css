@@ -1,0 +1,75 @@
+#popular-tabs-wrapper { margin-top: 30px }
+ul.tabs {
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style: none;
+    height: 27px; /*--Set height of tabs--*/
+    /*    border-bottom: 2px solid #a4c366;*/
+    /*    border-left: 2px solid #a4c366;*/
+    width: 100%;
+}
+ul.tabs li {
+    float: left;
+    margin: 0;
+    padding: 0;
+    /*    padding-right: 18px;*/
+    height: 31px; /*--Subtract 1px from the height of the unordered list--*/
+    line-height: 31px; /*--Vertically aligns the text within the tab--*/
+    /*    border: 2px solid #a4c366;*/
+    border-left: none;
+    margin-bottom: -2px; /*--Pull the list item down 1px--*/
+    overflow: hidden;
+    position: relative;
+    /*    background: #e1e1e1;*/
+    background: url('./../img/tab_right.png') top right no-repeat;
+    width: 77px;
+    text-align: center;
+    padding-right: 2px;
+}
+ul.tabs li.active {
+    background: url('./../img/tab_right_active.png') top right no-repeat;
+    border-bottom: none;
+}
+ul.tabs li.active a {
+    background: url('./../img/tab_left_active.png') top left no-repeat;
+    /*    z-index: 999;*/
+}
+ul.tabs li a {
+    text-decoration: none;
+    color: #737373;
+    display: block;
+    font-size: 0.9em;
+    font-weight: 600;
+    /*    padding: 0 15px;*/
+    /*    border: 1px solid #fff; --Gives the bevel look with a 1px white border inside the list item--*/
+    outline: none;
+    background: url('./../img/tab_left.png') top left no-repeat;
+    /*    padding-left: 2em;*/
+}
+ul.tabs li a:hover { /*    background: #ccc;_NO__DOTCOMMA__AFTER__*/ }
+/*html ul.tabs li.active, html ul.tabs li.active a:hover  {
+    background: #fff;
+    border-bottom: 1px solid #fff; --Makes the active tab look like it's connected with its content--
+}*/
+.tab_container {
+    border: 2px solid #a4c366;
+    border-top: none;
+    overflow: hidden;
+    clear: both;
+    float: left;
+    width: 100%;
+    background: #fff;
+    width: 312px;
+}
+.tab_content {
+    padding: 9px;
+    font-size: 1.1em;
+}
+.tab_content .wp-post-entry {
+    border: none;
+    font-size: 0.8em;
+}
+.tab_content .wp-post-full-content { margin-left: 90px }
+.tab_content .wp-post-full-content h3 { font-size: 1.5em }
+.tab_content .wp-post-thumbnail { width: auto }

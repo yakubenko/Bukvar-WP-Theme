@@ -1,0 +1,48 @@
+#tinymce {
+	font-family: Verdana;
+/*	font-size: 1.2em;*/
+	width: 575px;
+}
+
+
+div.alignright,img.alignright, a img.alignright {float:right; margin:1em 0em 1em 1em}
+img.alignleft, a img.alignleft {float:left; margin:1em 1em 1em 0}
+img.aligncenter, a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+
+
+
+div.wp-caption {
+	padding: 4px;
+	background: #eee;
+	font-size: 0.9em;
+	border: solid 1px #d3d3d3;
+
+	text-align: center;
+}
+
+
+div.wp-caption img {
+	padding: 0; margin: 0;
+}
+
+blockquote {
+	float: right;
+	width: 30%;
+	background: #f6f6f6;
+	padding: 1em;
+/*	font-weight: bold;*/
+	font-family: Serif;
+	color: #333;
+
+	text-align: center;
+	margin-left: 1em;
+	font-weight: bold;
+}
+
+blockquote.left {
+	float: left;
+}
+
+blockquote.center {
+	margin: 1.2em auto;
+}
