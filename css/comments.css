@@ -137,7 +137,7 @@ ul.children li div.comment-text:hover { color: #333 }
 }
 #commentform p.form-submit input {
     font-weight: 600;
-    font-size: 1.1em;
+    font-size: 1.2em;
 }
 #commentform p.logged-in-as {
     margin-bottom: 10px;

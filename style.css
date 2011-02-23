@@ -403,6 +403,20 @@ li.widget-container ul li a:hover {
     color: #d3d3d3;
 }
 
+
+div.footer-menu {
+	border: none;
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+
+div.menu-hr-box.footer-menu ul.default-hr-box-menu li a {
+	font-size: 1em;
+	font-weight: normal;
+}
+
+
 /* -------- OTHER -------- */
 
 .error-div { font-size: 1.2em;background: lightyellow;padding:0.6em; }
@@ -436,3 +450,16 @@ div#login-box {
 	font-weight: bold;
 	color: #09853c;
 }
+
+
+/* Widgets styling */
+div.wp-post-entry-widget {
+	margin-bottom: 2em;
+}
+
+
+h3.wp-post-title-widget {
+	margin-bottom: 0.2em;
+}
+
+

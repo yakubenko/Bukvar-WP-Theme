@@ -1,4 +1,7 @@
 
+	<div class="grid_12 alpha menu-hr-box footer-menu">
+		<?php wp_nav_menu( array( 'menu' => 'footer','container'=>'','menu_class'=>'default-hr-box-menu' ) ); ?>
+	</div>
 
 	<span class="clear">&nbsp;</span>
 
