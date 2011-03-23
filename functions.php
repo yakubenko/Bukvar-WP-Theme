@@ -2,6 +2,13 @@
 	add_theme_support('post-thumbnails');
 	add_editor_style('css/editor-stylesheet.css');
 
+	add_action( 'init', 'reg_menus' );
+	add_filter('excerpt_length', 'new_excerpt_length');
+	add_filter('pre_get_posts','searchFilter');
+	add_action('login_head', 'custom_login_css');
+	add_action('admin_menu', 'bukvar_theme_options');
+
+
 	if ( function_exists( 'add_image_size' ) ) {
 		add_image_size( 'post-list-thumb', 100, 100, false );
 		add_image_size( 'featured-thumb', 300, 180, true );
@@ -14,39 +21,31 @@
 		));
 	}
 
-	add_action( 'init', 'reg_menus' );
-
-
-
+	
 	function new_excerpt_length($length) {
 		return 20;
 	}
-	add_filter('excerpt_length', 'new_excerpt_length');
 
 
-
-
-	function mySearchFilter($query) {
+	function searchFilter($query) {
 		if ($query->is_search) {
 			$query->set('post_type', 'post');
 		}
 		return $query;
 	}
 
-	add_filter('pre_get_posts','mySearchFilter');
-
+	
 
 	if ( function_exists('register_sidebar') ) {
 		register_sidebar( array(
 			'name' => __( 'Primary Widget Area', 'bukvar' ),
 			'id' => 'primary-sidebar-bukvar',
-			'description' => __( 'The primary widget area', 'bukvar' ),
+			'description' => __( 'The primary widget area for Bukvar journalistic Wordpress theme. Just drop your favourite widgets here.', 'bukvar' ),
 			'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 			'after_widget' => '</li>',
 			'before_title' => '',
 			'after_title' => '',
 		) );
-
 	}
 
 
@@ -108,11 +107,8 @@
 	function custom_login_css() {
 		e('<link rel="stylesheet" type="text/css" href="'.get_bloginfo('template_directory').'/css/login/login.css" />');
 	}
-	add_action('login_head', 'custom_login_css');
 
-
-
-
+	
 	function customMoreText($id) {
 		$customMoreText = get_post_meta($id, 'custom_more_text', TRUE);
 		$customMoreText = (!$customMoreText)?__('Читать полностью ...'):$customMoreText;
@@ -121,60 +117,30 @@
 
 
 
+	function bukvar_header() {
+		do_action('bukvar_header');
+	}
+
 	
-
-	add_action('admin_menu', 'bukvar_theme_options');
-
 	function bukvar_theme_options() {
 		add_theme_page(__('Настройка темы Bukvar'), __('Настройка Bukvar'), 'manage_options', 'bukvar-main-options', 'bukvarMainOptions');
 	}
 
+	
 	function bukvarMainOptions() {
 		if (!current_user_can('manage_options'))  {
 			wp_die( __('You do not have sufficient permissions to access this page.') );
 		}
-
-		$bukvarSecretField = 'bukvar-options-posted';
 		
-
-
-		if(isset($_POST[$bukvarSecretField]) && $_POST[$bukvarSecretField]=='Y') {
+		if(wp_verify_nonce($_POST['bukvar_options_page_check'], 'bukvar_update_options')) {
 			update_option('bukvar-featured-category', $_POST['bukvar-featured-category']);
 		}
 
 
 		$featuredCat = get_option('bukvar-featured-category');$featuredCat = (!$featuredCat)?0:$featuredCat;
-
-	?>
-
-		<div class="wrap">
-			<h2><?php _e('Настройка темы Bukvar') ?></h2>
-
-			<form method="post" action="options.php">
-				<?php wp_nonce_field('update-options'); ?>
-				<input type="hidden" name="<?php e($bukvarSecretField) ?>" value="Y" />
-
-				<table class="form-table">
-					<tr valign="top">
-					<th scope="row"><?php _e('Выберите категорию для Featured') ?></th>
-					<td>
-						
-						<?php wp_dropdown_categories('name=bukvar-featured-category&hide_empty=0&selected='.$featuredCat); ?>
-					</td>
-					</tr>
-				</table>
-
-				<input type="hidden" name="action" value="update" />
-				<input type="hidden" name="page_options" value="bukvar-featured-category" />
-
-				<p class="submit">
-					<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
-				</p>
-
-			</form>
-		</div>
 		
-		
-	<?php
+		?><?php require_once 'settings/main-settings-form.php'; ?><?php
 	}
+
+	
 ?>

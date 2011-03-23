@@ -36,14 +36,17 @@
 
 		<?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); wp_head();  ?>
 <!--		Miseris succurrere disce» — Учись помогать несчастным (больным)-->
-
+		<?php bukvar_header(); ?>
 	</head>
+
+
+
+	
 
 
 	<body>
 		<div class="container_12" id="main-wrapper">
-
-			<?php if(is_home()): ?>
+			<?php if(is_home() || is_front_page()): ?>
 				<div class="grid_6 alpha" id="logo">
 					<a href="<?php e(home_url()) ?>" title="<?php e(__('Перейти на главную страницу')) ?>"><?php e(bloginfo('name')) ?></a>
 				</div>
@@ -64,10 +67,10 @@
 
 			<span class="clear">&nbsp;</span>
 
-			<?php $menuClass = (is_home())?'':'default-hr-box-menu left' ?>
+			<?php $menuClass = (is_home() || is_front_page())?'':'default-hr-box-menu left' ?>
 
 			<div class="grid_12 alpha menu-hr-box <?php e($menuClass) ?>" id="main-menu">
-				<?php if(!is_home()): ?>
+				<?php if(!is_home() && !is_front_page()): ?>
 					<ul class="default-hr-box-menu">
 						<li><a href="<?php e(home_url()) ?>" title="Перейти на главную страницу"><?php _e('Главная') ?></a></li>
 					</ul>

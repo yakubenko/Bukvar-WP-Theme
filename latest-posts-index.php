@@ -1,5 +1,5 @@
 <?php global $featuredCategory; ?>
-<h4 id="latest-posts-title">Последние статьи</h4>
+<h4 id="latest-posts-title"><?php _e('Последние статьи') ?></h4>
 
 
 <?php query_posts('cat=-'.$featuredCategory.'&paged='.$paged); ?>

@@ -5,7 +5,6 @@
 		$featuredCategory = ($featuredCategory)?$featuredCategory:0;
 	?>
 
-
 	<div class="featured-posts-list grid_6 alpha content-column" id="featured-posts">
 		<?php get_template_part('featured-posts-index'); ?>
 	</div>

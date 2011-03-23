@@ -336,7 +336,7 @@ div.menu-hr-box ul.default-hr-box-menu li a {
 
 div.menu-hr-box ul.default-hr-box-menu li:hover { background: #FFF }
 
-div.menu-hr-box ul.default-hr-box-menu li a:hover { color:#333;background: #eee;text-shadow:0px 0px 4px #a0bcfd; }
+div.menu-hr-box ul.default-hr-box-menu li a:hover { color:#333;background: #eee;text-shadow:0px 0px 4px #FFF; }
 
 div.menu-hr-box ul.default-hr-box-menu li.current-menu-item a {
     text-decoration: underline;

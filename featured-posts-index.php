@@ -1,4 +1,5 @@
 <?php global $featuredCategory; ?>
+
 <?php $featured = new WP_Query('cat='.$featuredCategory.'&posts_per_page=5'); ?>
 
 <?php if($featured->have_posts()): ?>
