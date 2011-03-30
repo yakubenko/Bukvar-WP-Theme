@@ -1,0 +1,43 @@
+html,body {
+	background: #eee;
+/*	color: pink;*/
+	background: url('./img/karachi.gif');
+/*	background: url('./img/hearts.jpg');*/
+}
+
+#main-wrapper {
+	background: #FFF;
+	padding-top: 2em;
+	border: solid 2px #d3d3d3;
+	padding-left: 2em;
+	padding-bottom: 2em;
+}
+
+
+#logo a {
+	background: url('./img/dummy-logo.gif') right no-repeat;
+}
+
+
+#copyright {
+	color: #FFF;
+}
+
+
+div.incategory-entry div.wp-post-thumbnail {
+	float: left;
+}
+
+
+div.incategory-entry div.wp-post-full-content {
+	margin-right: 0;
+	margin-left: 120px;
+	border-left: solid 1px #eee;
+	padding-left: 1em;
+}
+
+
+div.incategory-entry div.wp-post-full-content:hover {
+	color: #333;
+	border-left: solid 1px #d3d3d3;
+}

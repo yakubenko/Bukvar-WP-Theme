@@ -15,6 +15,10 @@
 		<div class="wp-singlepost-content">
 			<?php the_content() ?>
 		</div>
+
+		<?php if(function_exists('nshare_displayButtons')): ?>
+			<?php echo nshare_displayButtons(); ?>
+		<?php endif; ?>
 	</div>
 
 
