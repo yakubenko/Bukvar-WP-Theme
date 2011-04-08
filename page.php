@@ -1,6 +1,8 @@
 <?php get_header() ?>
 	<div id="main-content" class="grid_7 alpha">
-		<?php get_template_part('page-loop'); ?>
+		<?php get_template_part('loops/page-loop'); ?>
+		<?php comments_template(); ?>
+
 	</div>
 
 	<div class="grid_5 alpha side-column">

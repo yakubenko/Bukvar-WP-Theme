@@ -3,12 +3,20 @@
 <?php if(have_posts ()): ?>
 		<?php while(have_posts ()) : the_post(); ?>
 				<div <?php post_class(array('wp-post-entry','incategory-entry')); ?>>
-					<div class="wp-post-thumbnail">
-						<?php the_post_thumbnail('post-list-thumb'); ?>
-					</div>
+					<?php $postThumbClass = 'no-thumb'; ?>
 
 
-					<div class="wp-post-full-content">
+					<?php if(has_post_thumbnail ()):?>
+						<?php $postThumbClass = '' ?>
+						<div class="wp-post-thumbnail">
+							<a href="<?php the_permalink() ?>">
+								<?php the_post_thumbnail('post-list-thumb'); ?>
+							</a>
+						</div>
+					<?php endif; ?>
+
+
+					<div class="wp-post-full-content <?php echo $postThumbClass; ?> ">
 						<h3 class="wp-post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 
 						<div class="wp-post-meta">

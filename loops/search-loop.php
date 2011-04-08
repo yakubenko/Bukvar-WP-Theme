@@ -24,14 +24,10 @@
 				</div>
 		<?php endwhile; ?>
 
-			<?php
-				if(function_exists('wp_paginate')) {
-					wp_paginate();
-				}
-			?>
+			<?php bukvarPages(); ?>
 <?php else: ?>
-		<h3><?php _e('По вашему запросу ничего не найдено') ?></h3>
+		<h3><?php _e('There is nothing found for your query','bukvar') ?></h3>
 		<div class="error-div">
-			<?php _e('Извините, но мы не можем найти материалов, которые соответствуют заданным критериям поиска') ?>
+			<?php _e('We are wery sorry, but we cant find something relative to your search query.','bukvar') ?>
 		</div>
 <?php endif; ?>

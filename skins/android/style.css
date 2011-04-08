@@ -1,0 +1,9 @@
+/* 
+    Skin name: Android skin
+    Parent: default
+*/
+
+
+#logo a {
+	background: url('./img/google_android_logo.jpg') no-repeat;
+}

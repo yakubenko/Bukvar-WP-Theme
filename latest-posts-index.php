@@ -1,8 +1,11 @@
 <?php global $featuredCategory; ?>
-<h4 id="latest-posts-title"><?php _e('Последние статьи') ?></h4>
+<h4 id="latest-posts-title"><?php _e('Latest articles','bukvar') ?></h4>
 
 
 <?php query_posts('cat=-'.$featuredCategory.'&paged='.$paged); ?>
+<?php //query_posts('cat=-'.$featuredCategory); ?>
+
+
 
 <?php if(have_posts ()): ?>
 	<?php while(have_posts ()) : the_post(); ?>
@@ -27,17 +30,19 @@
 				</div>
 
 
-				<div class="post-content">
+				<div class="wp-post-content">
 					<?php the_content(customMoreText($post->ID)); ?>
+
+					<?php wp_link_pages('before=<div class="page-splitter">'.__('Pages:','bukvar').' &after=</div>');?>
+				</div>
+
+				<div class="wp-post-tags">
+					<?php the_tags(__('Tags: ','bukvar')); ?>
 				</div>
 			</div>
 		</div>
 	<?php endwhile; ?>
 
-	<?php
-		if(function_exists('wp_paginate')) {
-			wp_paginate();
-		}
-	?>
+	<?php bukvarPages(); ?>
 
 <?php endif; ?>

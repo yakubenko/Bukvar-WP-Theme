@@ -8,28 +8,34 @@
   	<?php endif; ?>
 <?php endif; ?>
 
+
 <?php if($comments) : ?>	
 		<h3 class="all-comments-title"><?php comments_number() ?> </h3>
 
-	<div id="comments">
-		<ol id="comments-list">
-			<?php wp_list_comments('type=comment&callback=bukvarComments'); ?>
-		</ol>
-	</div>
-
+		<div id="comments">
+			<ol id="comments-list">
+				<?php wp_list_comments('type=comment&callback=bukvarComments'); ?>
+			</ol>
+		</div>
 <?php else : ?>
-	<p class="no-comments" id="comments"><?php e(__('Комментариев нет')) ?></p>
+	<?php if(comments_open ()): ?>
+	<p class="no-comments" id="comments"><?php e(__('No comments','bukvar')) ?></p>
+	<?php endif; ?>
 <?php endif; ?>
+
+
 
 <?php if(comments_open()) : ?>
 	<?php if(get_option('comment_registration') && !$user_ID) : ?>
-		<p>Вы должны <a href="<?php e(get_option('siteurl')); ?>/wp-login.php?redirect_to=<?php e(urlencode(get_permalink())); ?>">войти в систему</a>
-		чтобы опубликовать комментарий</p>
+		<p><?php _e('You need to be a registred user to leave the comment','bukvar') ?></p>
+		<p><a href="<?php e(get_option('siteurl')); ?>/wp-login.php?redirect_to=<?php e(urlencode(get_permalink())); ?>"><?php _e('Login','bukvar') ?></a></p>
 	<?php else : ?>
 		<?php comment_form() ?>
 	<?php endif; ?>
 	
 <?php else : ?>
-	<p><?php e(__('Комментарии закрыты')); ?></p>
+	<?php if(!is_page()): ?>
+		<p><?php e(__('Comments are closed')); ?></p>
+	<?php endif; ?>
 <?php endif; ?>
 

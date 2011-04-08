@@ -28,23 +28,17 @@
 
 
 						<div class="post-content">
-							<?php the_content(__('Читать полностью ...')); ?>
+							<?php the_content(__('Continue reading','bukvar')); ?>
 						</div>
 					</div>
 				</div>
 		<?php endwhile; ?>
 
-			<?php
-				if(function_exists('wp_paginate')) {
-					wp_paginate();
-				}
-			?>
+			<?php bukvarPages(); ?>
 <?php else: ?>
-		<h3><?php _e('Рубрика пуста'); ?></h3>
+		<h3><?php _e('Category is empty','bukvar'); ?></h3>
 		<div class="error-div">
-			<?php _e('Извините, но в данной рубрике нет статей.
-				Вы можете воспользоваться формой поиска в
-				правой колонке для поиска интересных материаллов.'); ?>
+			<?php _e('There is no articles in the category. Use search to find something.','bukvar'); ?>
 		</div>
 <?php endif; ?>
 

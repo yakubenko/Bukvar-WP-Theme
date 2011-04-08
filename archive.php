@@ -1,6 +1,6 @@
 <?php get_header() ?>
 	<div id="main-content" class="grid_7 alpha">
-		<?php get_template_part('archive-loop'); ?>
+		<?php get_template_part('loops/archive-loop'); ?>
 	</div>
 
 	<div class="grid_5 alpha side-column">

@@ -6,7 +6,7 @@
 
 		<?php if($showMetadataForPages=='1'): ?>
 		<div class="wp-singlepost-meta">
-			<?php the_date('d M Y') ?> от <?php the_author_posts_link() ?> <?php edit_post_link(__('Редактировать статью'),' &mdash; ') ?>
+			<?php the_date('d M Y') ?> от <?php the_author_posts_link() ?> <?php edit_post_link(__('Edit the article','bukvar'),' &mdash; ') ?>
 		</div>
 		<?php endif; ?>
 

@@ -22,7 +22,7 @@
 
 			// Add a page number if necessary:
 			if ( $paged >= 2 || $page >= 2 )
-				echo ' | ' . sprintf( __( '%s страница', 'bukvar' ), max( $paged, $page ) );
+				echo ' | ' . sprintf( __( 'page %s', 'bukvar' ), max( $paged, $page ) );
 
 			?>
 		</title>
@@ -31,6 +31,7 @@
 		<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/text.css" />
 		<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/1024.css" />
 		<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+		<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/menus.css" />
 		<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/comments.css" />
 		<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/css/editor-stylesheet.css" />
 
@@ -48,7 +49,7 @@
 		<div class="container_12" id="main-wrapper">
 			<?php if(is_home() || is_front_page()): ?>
 				<div class="grid_6 alpha" id="logo">
-					<a href="<?php e(home_url()) ?>" title="<?php e(__('Перейти на главную страницу')) ?>"><?php e(bloginfo('name')) ?></a>
+					<a href="<?php e(home_url()) ?>" title="<?php e(__('Go to homepage','bukvar')) ?>"><?php e(bloginfo('name')) ?></a>
 				</div>
 
 				<div class="grid_6 alpha" id="banner">
@@ -57,10 +58,10 @@
 
 			<?php else: ?>
 				<div class="grid_3 alpha" id="logo-small">
-					<a href="<?php e(home_url()) ?>" title="<?php e(__('Перейти на главную страницу')) ?>"><?php e(bloginfo('name')) ?></a>
+					<a href="<?php e(home_url()) ?>" title="<?php e(__('Go to homepage','bukvar')) ?>"><?php e(bloginfo('name')) ?></a>
 				</div>
 
-				<div class="grid_9 alpha" id="banner">
+				<div class="grid_9 alpha banner-small" id="banner">
 					<img src="<?php bloginfo( 'template_directory' ); ?>/img/header_advert.jpg" alt="" />
 				</div>
 			<?php endif; ?>
@@ -72,11 +73,12 @@
 			<div class="grid_12 alpha menu-hr-box <?php e($menuClass) ?>" id="main-menu">
 				<?php if(!is_home() && !is_front_page()): ?>
 					<ul class="default-hr-box-menu">
-						<li><a href="<?php e(home_url()) ?>" title="Перейти на главную страницу"><?php _e('Главная') ?></a></li>
+						<li><a href="<?php e(home_url()) ?>" title="<?php _e('Go to homepage','bukvar') ?>"><?php _e('Home','bukvar') ?></a></li>
 					</ul>
 				<?php endif; ?>
 				
-				<?php wp_nav_menu( array( 'menu' => 'first','container'=>'','menu_class'=>'default-hr-box-menu' ) ); ?>
+				<?php wp_nav_menu( array( 'menu' => 'first','container'=>'','menu_class'=>'default-hr-box-menu' )); ?>
+				
 			</div>
 
 			<span class="clear">&nbsp;</span>

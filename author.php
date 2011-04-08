@@ -1,6 +1,6 @@
 <?php get_header() ?>
 	<div id="main-content" class="grid_7 alpha">
-		<?php get_template_part('author-loop'); ?>
+		<?php get_template_part('loops/author-loop'); ?>
 	</div>
 
 	<div class="grid_5 alpha side-column">

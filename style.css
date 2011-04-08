@@ -1,10 +1,10 @@
 /*
 Theme Name: Bukvar
-Theme URI: http://авто-букварь.рф
+Theme URI: http://www.bukvar-theme.ru
 Description: Avto Bukvar Theme
 Version: 0.9.9
 Author: Stanislav Yakubenko
-Author URI: http://авто-букварь.рф
+Author URI: http://www.bukvar-theme.ru
 */
 
 /* http://colorscheme.ru/#0-62dw0w0w0w0 - URL to the main color scheme of the site*/
@@ -34,6 +34,7 @@ h4 { font-family: Arial }
 .content-column {
     margin-top: 15px;
     margin-bottom: 15px;
+    overflow: hidden;
 }
 
 #logo {
@@ -117,6 +118,26 @@ h3.wp-singlepost-title a:hover {
     text-decoration: underline;
 }
 
+
+div.wp-post-tags {
+	font-size: 1em;
+	padding: 0.2em;
+	color:#666;
+	font-weight: bolder;
+}
+
+
+div.wp-post-tags a {
+	text-decoration: none;
+	border-bottom: dotted 1px;
+	font-weight: normal;
+/*	background: lightyellow;*/
+	padding: 0.1em;
+	font-style: italic;
+}
+
+
+
 div.wp-post-meta,
 div.wp-singlepost-meta {
     font-size: 1em;
@@ -175,14 +196,10 @@ div.wp-post-thumbnail-featured { }
 div.wp-post-thumbnail-featured img { margin-bottom: 0em }
 
 h3.wp-post-title-featured {
-    font-size: 1.7em;
     margin-bottom: 0em;
-    text-shadow: 0px 1px 0px #000;
 }
 
 h3.wp-post-title-featured a {
-    color: #FFF;
-    background: #6D87D6;
     font-family: 'Arial';
     text-decoration: none;
     padding: 4px;
@@ -258,7 +275,7 @@ div.wp-singlepost-meta { margin-bottom: 1.2em }
 
 div.wp-singlepost-thumb { margin-bottom: 1.2em }
 
-div.wp-singlepost-content { font-size: 1.3em }
+div.wp-singlepost-content, div.wp-post-content { font-size: 1.3em }
 
 h3.category-title { }
 
@@ -302,46 +319,7 @@ span.page.current { border: solid 1px #d3d3d3 }
 
 /* --------------- PAGINATION END -------- */
 
-div.menu-hr-box {
-    margin-bottom: 20px;
-    text-align: center;
-    border-bottom: solid 1px #EEEEEE;
-}
 
-div.menu-hr-box.left { text-align: left }
-
-div.menu-hr-box ul.default-hr-box-menu {
-    display: inline;
-    list-style: none;
-}
-
-div.menu-hr-box ul.default-hr-box-menu li {
-    list-style: none;
-    display: inline;
-    margin: 0 15px 0 0;
-    height: 30px;
-}
-
-div.menu-hr-box ul.default-hr-box-menu li a {
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    line-height: 30px;
-    text-transform: uppercase;
-    padding: 0 8px 0 8px;
-    font-size: 1.1em;
-    font-family: Verdana;
-    color: #333;
-}
-
-div.menu-hr-box ul.default-hr-box-menu li:hover { background: #FFF }
-
-div.menu-hr-box ul.default-hr-box-menu li a:hover { color:#333;background: #eee;text-shadow:0px 0px 4px #FFF; }
-
-div.menu-hr-box ul.default-hr-box-menu li.current-menu-item a {
-    text-decoration: underline;
-    /*    color: #6D87D6;*/
-}
 
 div#sidebar {
     padding: 0.8em;
@@ -521,4 +499,66 @@ div.footer-col h3:hover {
 #second-footer-col h3 {
 	color: #666;
 	text-shadow: 0px 2px 0px #FFF;
+}
+
+
+div.wp-post-entry.sticky {
+	background: #EEE;
+	padding: 1em;
+	border-left: solid 1px #d3d3d3;
+}
+
+
+
+div.page-splitter {
+	margin-top: 1em;
+	margin-bottom: 2em;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+
+div.page-splitter a {
+	color: #09853c;
+}
+
+
+
+div.gallery {
+	background: #FFF;
+}
+
+dl.gallery-item {
+	background: #FFF;
+}
+
+dt.gallery-icon img {
+	border: none !important;
+	margin: 0 !important;
+}
+
+dd.gallery-caption {
+	display:block;
+	color: #333;
+	font-size: 0.8em;
+	background: #eee;
+	margin-top: 0;
+}
+
+
+div.wp-post-content embed {
+	width: 90%;
+}
+
+
+
+div.navigation-pages {
+	font-size: 1.3em;
+	text-transform: uppercase;
+}
+
+
+div.navigation-pages a {
+	text-decoration: none;
+	border-bottom: dotted 1px;
 }

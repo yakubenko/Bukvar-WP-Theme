@@ -1,5 +1,10 @@
 <?php
 
+	// Internationalization loading
+	// You can create your own translation. Just fork *.po file from lang folder
+	load_plugin_textdomain('bukvar',null,dirname( plugin_basename( __FILE__ ) ) . '/lang/');
+	
+	
 	add_theme_support('post-thumbnails');
 	add_editor_style('css/editor-stylesheet.css');
 
@@ -12,10 +17,6 @@
 
 
 	add_action('bukvar_header','bukvarLoadSkin');
-	
-//	add_filter('the_excerpt', array($wp_embed, 'autoembed'), 8);
-//	add_filter('widget_text', array($wp_embed, 'autoembed'), 8);
-//	add_filter('widget_text', array($wp_embed,'run_shortcode' ), 8);
 
 
 	if ( function_exists( 'add_image_size' ) ) {
@@ -31,13 +32,12 @@
 	}
 
 
-
-
 	function bukvarExcertLength($length) {
 		return 20;
 	}
 
 
+	
 	function bukvarSearchFilter($query) {
 		if ($query->is_search) {
 			$query->set('post_type', 'post');
@@ -47,6 +47,7 @@
 
 	
 
+	// Register main widget areas
 	if ( function_exists('register_sidebar') ) {
 		register_sidebar( array(
 			'name' => __( 'Primary Widget Area', 'bukvar' ),
@@ -90,15 +91,43 @@
 			'before_title' => '<h3>',
 			'after_title' => '</h3>',
 		) );
+
+
+		register_sidebar( array(
+			'name' => __( 'Featured posts column', 'bukvar' ),
+			'id' => 'featured-widgetbar-bukvar',
+			'description' => __( 'Featured widget bar', 'bukvar' ),
+			'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+			'after_widget' => '</li>',
+			'before_title' => '<h3>',
+			'after_title' => '</h3>',
+		) );
 	}
 
 
-	function e($text='') {
-		echo $text;
+
+	if(!function_exists('e')) {
+		function e($text='') {
+			echo $text;
+		}
+	}
+
+
+	// Prints navigation links to Older or Newer content
+	// Prints Paged navigation if WP-Paginate plugin installed
+	function bukvarPages() {
+		if(function_exists('wp_paginate')) {
+			wp_paginate();
+		} else {
+			echo'<div class="navigation-pages"><p>';
+			echo posts_nav_link(' &mdash; ',' ←'.__('Newer posts'),__('Older posts').' → ');
+			echo '</p></div>';
+		}
 	}
 
 
 
+	// Just a replace for default WP comments Walker function
 	function bukvarComments($comment, $args, $depth) {
 	   $GLOBALS['comment'] = $comment;
 	?>
@@ -111,9 +140,9 @@
 
 					<div class="comment-meta commentmetadata">
 						<?php e(get_comment_date().' в '.get_comment_time('H:m')) ?>
-						<?php edit_comment_link(__('Edit'),'  ','') ?>
+						<?php edit_comment_link(__('Edit comment'),'  ','') ?>
 
-						<a href="#comment-<?php e(comment_ID()) ?>" title="<?php e(__('Ссылка на этот комментарий')) ?>" rel="noindex, nofollow">#</a>
+						<a href="#comment-<?php e(comment_ID()) ?>" title="<?php e(__('current comment link')) ?>" rel="noindex, nofollow">#</a>
 					</div>
 				</div>
 	      
@@ -123,6 +152,7 @@
 					<?php else: ?>
 						<?php comment_text() ?>
 					<?php endif; ?>
+						<span class="clear">&nbsp;</span>
 				</div>
 
 				<div class="comment-reply">
@@ -147,37 +177,92 @@
 		e('<link rel="stylesheet" type="text/css" href="'.get_bloginfo('template_directory').'/css/login/login.css" />');
 	}
 
-	
+
+	/**
+	 *
+	 * @param Integer $id The Post ID
+	 * @return String returns HTML formatted link with custom CR text
+	 */
 	function customMoreText($id) {
 		$customMoreText = get_post_meta($id, 'custom_more_text', TRUE);
-		$customMoreText = (!$customMoreText)?__('Читать полностью ...'):$customMoreText;
+		$customMoreText = (!$customMoreText)?__('Continue reading','bukvar'):$customMoreText;
 		return $customMoreText;
 	}
 
 
 
 
-	function bukvarGetSkins() {
-		$skinsDirPath = dirname(__FILE__).'/skins/';
-		$skinsDir = opendir($skinsDirPath);
-		$allSkins = array('');
+	/**
+	 *
+	 * @param String $skinName Skin name
+	 * @return Array Returns Array contain all information about specified skin
+	 */
+	function bukvarGetSkinInfo($skinName) {
 
-		while( ($singleSkinDir = readdir($skinsDir))!==false ) {
-			if(is_dir($skinsDirPath.$singleSkinDir)  && $singleSkinDir!='.' && $singleSkinDir!='..') {
-				$allSkins[] = $singleSkinDir;
+		$default_headers = array(
+		    'name' => 'Skin name',
+		    'author' => 'Author',
+		    'parent' => 'Parent',
+		    'scripts' => 'Scripts'
+		);
+
+		$skinInfo = get_file_data(dirname(__FILE__).'/skins/'.$skinName.'/style.css', $default_headers);
+
+		// Dirty trick I know
+		$skinInfo['scripts'].=',';
+		$scriptsToLoad = explode(',',$skinInfo['scripts']);
+
+		for($i=0;$i<=count($scriptsToLoad)-1;$i++) {
+			if(trim($scriptsToLoad[$i])==='') {
+				unset($scriptsToLoad[$i]);
 			}
 		}
 
-		closedir($skinsDir);
+		$skinInfo['scripts'] = $scriptsToLoad;
+		return $skinInfo;
+	}
+
+
+
+	/**
+	 *
+	 * @return Array Return an Array of all installed skins
+	 */
+	function bukvarGetSkins() {
+		$skinsDirPath = dirname(__FILE__).'/skins/';
+		$skinsDir = opendir($skinsDirPath);
+		$allSkins = array( array('',array('name'=>__('Do not use the skin'),'author'=>'','parent'=>'') ));
+
+		while( ($singleSkinDir = readdir($skinsDir))!==false ) {
+			if(is_dir($skinsDirPath.$singleSkinDir)  && $singleSkinDir!='.' && $singleSkinDir!='..') {
+				$allSkins[] = array($singleSkinDir,bukvarGetSkinInfo($singleSkinDir));
+			}
+		}
 		return $allSkins;
 	}
+
 
 
 	function bukvarLoadSkin() {
 		$bukvarCurrentSkin = get_option('bukvar-default-skin','default');
 		
 		if($bukvarCurrentSkin!='') {
+			$skinInfo = bukvarGetSkinInfo($bukvarCurrentSkin);
+
+			if(isset($skinInfo['parent']) && $skinInfo['parent']!='') {
+				echo '<link rel="stylesheet" type="text/css" media="all" href="'.get_stylesheet_directory_uri().'/skins/'.$skinInfo['parent'].'/style.css" />';
+			}
+
 			echo '<link rel="stylesheet" type="text/css" media="all" href="'.get_stylesheet_directory_uri().'/skins/'.$bukvarCurrentSkin.'/style.css" />';
+
+			
+
+
+			if(is_array($skinInfo['scripts']) && !empty($skinInfo['scripts'])) {
+				foreach($skinInfo['scripts'] as $script) {
+				echo '<script type="text/javascript" src="'.get_stylesheet_directory_uri().'/skins/'.$bukvarCurrentSkin.'/js/'.$script.'.js"></script>';
+				}
+			}
 		}
 	}
 
@@ -190,8 +275,12 @@
 
 	
 	function bukvarThemeOptions() {
-//		add_theme_page(__('Настройка темы Bukvar'), __('Настройка Bukvar'), 'manage_options', 'bukvar-main-options', 'bukvarMainOptionsForm');
-		add_theme_page(__('Настройка темы Bukvar'), __('Настройка Bukvar'), 'manage_options', 'bukvar-main-options', 'bukvarMainOptionsForm');
+		add_theme_page(__('Bukvar theme settings'),
+			'<img src="'.get_stylesheet_directory_uri().'/img/theme-icon.png" /> '.__('Bukvar','bukvar').' <sup>beta</sup>',
+			'manage_options',
+			'bukvar-main-options',
+			'bukvarMainOptionsForm'
+			);
 	}
 
 
@@ -202,6 +291,8 @@
 
 		register_setting( 'bukvar-theme-options', 'bukvar-show-extended-footer' );
 		register_setting( 'bukvar-theme-options', 'bukvar-show-metadata-for-pages' );
+
+		register_setting( 'bukvar-theme-options', 'bukvar-show-loginbox' );
 
 
 		register_setting( 'bukvar-theme-options', 'bukvar-default-skin' );
@@ -221,7 +312,7 @@
 
 	function bukvarMainOptionsForm() {
 		if(!current_user_can('manage_options'))  {
-			wp_die( __('You do not have sufficient permissions to access this page.') );
+			wp_die( __('You do not have sufficient permissions to access this page.','bukvar') );
 		}
 		
 
@@ -232,6 +323,7 @@
 
 		$showExtendedFooter = bukvarGetOptionValue('bukvar-show-extended-footer');
 		$showMetadataForPages = bukvarGetOptionValue('bukvar-show-metadata-for-pages');
+		$showLoginBox = bukvarGetOptionValue('bukvar-show-loginbox');
 
 
 		$bukvarListSkins = bukvarGetSkins();

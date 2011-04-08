@@ -45,11 +45,7 @@
 				</div>
 		<?php endwhile; ?>
 
-			<?php
-				if(function_exists('wp_paginate')) {
-					wp_paginate();
-				}
-			?>
+			<?php bukvarPages(); ?>
 <?php else: ?>
 		<div class="error-div">
 			Извините, но в данной рубрике нет статей. Вы можете воспользоваться формой поиска в правой колонке для поиска интересных материаллов.

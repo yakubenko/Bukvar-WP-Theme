@@ -1,3 +1,8 @@
+/**
+* Skin name: Default Bukvar
+* Scripts: functions
+*/
+
 html,body {
 	background: #eee;
 /*	color: pink;*/
@@ -15,7 +20,12 @@ html,body {
 
 
 #logo a {
-	background: url('./img/dummy-logo.gif') right no-repeat;
+	background: url('./img/logo.png') right no-repeat;
+}
+
+
+#logo-small a {
+	background: url('./img/logo-small.png') right no-repeat;
 }
 
 
@@ -41,3 +51,114 @@ div.incategory-entry div.wp-post-full-content:hover {
 	color: #333;
 	border-left: solid 1px #d3d3d3;
 }
+
+
+
+div.incategory-entry div.wp-post-full-content.no-thumb {
+	margin-left: 0;
+	border-left: none;
+}
+
+
+div.wp-post-entry-featured {
+	text-align: center;
+}
+
+
+input#s {
+	margin-right: 0px;
+	width: 350px;
+	border: solid 2px #d3d3d3;
+}
+
+
+#searchsubmit {
+	width: 10px;
+	margin-left: -25px;
+	border: none;
+	border-left: solid 1px #d3d3d3;
+	background: #FFF url('./img/search_icon.png') no-repeat 1%;
+
+	text-indent: -999px;
+}
+
+
+#searchsubmit:active {
+	border: none;
+}
+
+
+
+div.banner-small {
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+
+div.wp-post-entry {
+	padding-left: 0;
+	padding-bottom: 1em;
+	border-bottom: dotted 1px #d3d3d3;
+}
+
+
+
+h3.wp-post-title a, h1.wp-singlepost-title a {
+	color: #333;
+}
+
+
+h3.wp-post-title a:hover {
+	color:#666;
+}
+
+
+
+div.wp-post-entry-featured {
+	text-align: right;
+	position: relative;
+}
+
+
+h3.wp-post-title-featured.with-thumb {
+	display: inline;
+	clear: both;
+
+	float: right;
+	position: absolute;
+	top: 0.5em;
+	right: 0;
+}
+
+
+
+div.menu-hr-box ul li:hover ul.sub-menu li a, div.menu-hr-box ul li:hover ul.children li a {
+	border-top: dotted 1px #d3d3d3;
+/*	border-left: solid 2px #666;*/
+}
+
+
+
+div.wp-post-thumbnail-featured img {
+	border: solid 1px #d3d3d3;
+	padding: 0.2em;
+	border-radius: 2px;
+}
+
+
+
+div.wp-post-entry-featured:hover img {
+	border: solid 1px #333;
+}
+
+
+
+h3.wp-post-title-featured a {
+	color: #13455b;
+}
+
+
+h3.wp-post-title-featured a:hover {
+	color: #666;
+}
+

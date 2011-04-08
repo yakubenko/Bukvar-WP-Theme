@@ -1,13 +1,13 @@
 #tinymce {
 	font-family: Verdana;
-/*	font-size: 1.2em;*/
 	width: 575px;
 }
 
 
 div.alignright,img.alignright, a img.alignright {float:right; margin:1em 0em 1em 1em}
-img.alignleft, a img.alignleft {float:left; margin:1em 1em 1em 0}
-img.aligncenter, a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+div.alignleft,img.alignleft, a img.alignleft {float:left; margin:1em 1em 1em 0}
+div.aligncenter,img.aligncenter, a img.aligncenter {display: block; margin-left: auto; margin-right: auto;margin-top: 1em;margin-bottom: 1em}
+img.alignnone, img.size-full {display: block;clear:both;margin-bottom: 1em;margin-top: 1em;}
 
 
 
@@ -16,8 +16,9 @@ div.wp-caption {
 	background: #eee;
 	font-size: 0.9em;
 	border: solid 1px #d3d3d3;
-
 	text-align: center;
+	margin-top: 1em;
+	margin-bottom: 1em;
 }
 
 
@@ -25,24 +26,185 @@ div.wp-caption img {
 	padding: 0; margin: 0;
 }
 
-blockquote {
-	float: right;
-	width: 30%;
-	background: #f6f6f6;
-	padding: 1em;
-/*	font-weight: bold;*/
-	font-family: Serif;
-	color: #333;
 
-	text-align: center;
-	margin-left: 1em;
+h1,h2,h3,h4,h5,h6 {
+	line-height: 100%;
+}
+
+address {
+	background: #FFF;
+	padding: 0.5em;
+	width: auto;
+	clear: both;
+	border-left: solid 3px #9FD0D5;
+}
+
+p {
+	margin-bottom: 1.8em;
+}
+
+ul {
+	list-style: square;
+	margin: 0 0 18px 0;
+	padding: 0;
+	color: #666;
+}
+
+ul li ul, ol li ol {
+	margin-bottom: 0.5em;
+}
+
+
+ol {
+	list-style: decimal;
+	margin: 0 0 18px 0;
+	color: #666;
+}
+ol ol {
+	list-style: upper-alpha;
+}
+ol ol ol {
+	list-style: lower-roman;
+}
+ol ol ol ol {
+	list-style: lower-alpha;
+}
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+	margin-bottom: 0;
+}
+dl {
+	margin: 0 0 24px 0;
+}
+dt {
 	font-weight: bold;
 }
-
-blockquote.left {
-	float: left;
+dd {
+	margin-bottom: 18px;
+}
+strong {
+	font-weight: bold;
+}
+cite,
+em,
+i {
+	font-style: italic;
+}
+big {
+	font-size: 131.25%;
+}
+ins {
+	background: #ffc;
+	text-decoration: none;
+	margin: 1em 0 1em 0;
+}
+blockquote {
+	background: #FFF;
+	border-left: solid 3px #d3d3d3;
+	font-style: normal;
+	padding: 0.5em;
+	padding-left: 1em;
+	margin: 1em 0 1em 0;
+	font-family: Serif;
+	color: #666;
 }
 
-blockquote.center {
-	margin: 1.2em auto;
+
+blockquote blockquote {
+	background: lightgoldenrodyellow;
+}
+
+
+blockquote blockquote blockquote {
+	background: lightcyan;
+}
+
+
+blockquote p {
+	margin-bottom: 0.3em;
+}
+
+
+blockquote cite {
+	font-weight: bold;
+	color: #333;
+}
+
+
+blockquote cite,
+blockquote em,
+blockquote i {
+	font-style: normal;
+}
+
+pre {
+	background: #f7f7f7;
+	color: #222;
+	line-height: 18px;
+	margin-bottom: 18px;
+	padding: 1em;
+	font-family: "Courier 10 Pitch", Courier, monospace;
+}
+abbr,
+acronym {
+	border-bottom: 1px dotted #666;
+	cursor: help;
+}
+sup,
+sub {
+	height: 0;
+	line-height: 1;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+	bottom: 1ex;
+}
+sub {
+	top: .5ex;
+}
+
+
+table {
+	border: 1px solid #d3d3d3;
+	border-bottom: none;
+	text-align: left;
+	width: 100%;
+}
+
+tr {
+	border-bottom: solid 1px #d3d3d3;
+}
+
+
+tr.alternate {
+	background: lightgoldenrodyellow;
+}
+
+
+
+th {
+	text-align: left;
+	background: #666;
+	color: #FFF;
+}
+
+th, td {
+	padding: 0.3em;
+}
+
+
+
+
+a:link {
+	color: #0066cc;
+}
+a:visited {
+	color: #743399;
+}
+a:active,
+a:hover {
+	color: #ff4b33;
 }
