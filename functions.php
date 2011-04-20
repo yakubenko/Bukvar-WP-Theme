@@ -2,9 +2,11 @@
 
 	// Internationalization loading
 	// You can create your own translation. Just fork *.po file from lang folder
-	load_plugin_textdomain('bukvar',null,dirname( plugin_basename( __FILE__ ) ) . '/lang/');
-	
-	
+	// You can use this filter to test your translation
+	//add_filter( 'locale', 'bukvarSetLocale' );
+	load_theme_textdomain('bukvar', dirname(__FILE__).'/lang/');
+
+
 	add_theme_support('post-thumbnails');
 	add_editor_style('css/editor-stylesheet.css');
 
@@ -25,6 +27,11 @@
 	}
 
 
+	function bukvarSetLocale() {
+		return 'ru_RU';
+	}
+
+
 	function bukvarRegmenus() {
 		register_nav_menus(array(
 		    'first','second','footer'
@@ -37,7 +44,7 @@
 	}
 
 
-	
+
 	function bukvarSearchFilter($query) {
 		if ($query->is_search) {
 			$query->set('post_type', 'post');
@@ -45,7 +52,7 @@
 		return $query;
 	}
 
-	
+
 
 	// Register main widget areas
 	if ( function_exists('register_sidebar') ) {
@@ -96,7 +103,7 @@
 		register_sidebar( array(
 			'name' => __( 'Featured posts column', 'bukvar' ),
 			'id' => 'featured-widgetbar-bukvar',
-			'description' => __( 'Featured widget bar', 'bukvar' ),
+			'description' => __( 'Widgets bar for column with Featured posts', 'bukvar' ),
 			'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 			'after_widget' => '</li>',
 			'before_title' => '<h3>',
@@ -120,10 +127,71 @@
 			wp_paginate();
 		} else {
 			echo'<div class="navigation-pages"><p>';
-			echo posts_nav_link(' &mdash; ',' ←'.__('Newer posts'),__('Older posts').' → ');
+			echo posts_nav_link(' &mdash; ',' ←'.__('Newer posts','bukvar'),__('Older posts','bukvar').' → ');
 			echo '</p></div>';
 		}
 	}
+
+
+
+	function bukvarPostTagsAndCats() {
+		global $post;
+		?>
+		<div class="wp-post-tags">
+			<?php the_tags(__('Tagged as: ','bukvar')); ?>
+		</div>
+
+		<div class="wp-post-categories">
+			<?php _e('Posted in: ','bukvar'); ?>
+			<?php the_category(', '); ?>
+		</div>
+	<?php
+	}
+
+
+
+	function bukvarPostMeta($single=false) {
+		global $post;?>
+
+		<?php if(!$single): ?>
+			<div class="wp-post-meta">
+				<?php _e('By','bukvar') ?> <?php the_author_posts_link() ?><br/>
+				<?php the_date() ?> - <a href="<?php comments_link() ?>" class="comments-link">
+					<?php e(get_comments_number()) ?>
+				</a>
+			</div>
+		<?php else: ?>
+			<div class="wp-singlepost-meta">
+				<?php _e('By','bukvar') ?> <?php the_author_posts_link() ?> <?php edit_post_link(__('Edit the article','bukvar'),' &mdash; ') ?><br/>
+				<?php the_date() ?> - <a href="<?php comments_link() ?>" class="comments-link"><?php e(get_comments_number()) ?></a>
+			</div>
+		<?php endif; ?>
+	<?php
+	}
+
+
+
+	function bukvarNoThumbClass() {
+		global $post;
+		return (has_post_thumbnail())?'':'no-thumb';
+	}
+
+
+
+
+
+	// http://wordpress.org/support/topic/featured-image-display-image-caption
+	function bukvarFeaturedImageCaption() {
+		  global $post;
+
+		  $thumbnail_id    = get_post_thumbnail_id($post->ID);
+		  $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment'));
+
+		  if ($thumbnail_image && isset($thumbnail_image[0]) && $thumbnail_image[0]->post_excerpt!=='') {
+			  return '<p class="wp-singlepost-thumb-caption">'.$thumbnail_image[0]->post_excerpt.'</p>';
+		  }
+	}
+
 
 
 
@@ -136,19 +204,19 @@
 			<div id="comment-<?php comment_ID(); ?>">
 				<div class="comment-author vcard">
 					<?php echo get_avatar($comment,$size='24' ); ?>
-					<?php e(comment_author_link()) ?>
+					<span class="comment-author-name"><?php e(comment_author_link()) ?></span>
 
 					<div class="comment-meta commentmetadata">
 						<?php e(get_comment_date().' в '.get_comment_time('H:m')) ?>
-						<?php edit_comment_link(__('Edit comment'),'  ','') ?>
+						<?php edit_comment_link(__('Edit comment','bukvar'),'  ','') ?>
 
-						<a href="#comment-<?php e(comment_ID()) ?>" title="<?php e(__('current comment link')) ?>" rel="noindex, nofollow">#</a>
+						<a href="#comment-<?php e(comment_ID()) ?>" title="<?php e(__('current comment link','bukvar')) ?>" rel="noindex, nofollow">#</a>
 					</div>
 				</div>
-	      
+
 				<div class="comment-text">
 					<?php if ($comment->comment_approved == '0') : ?>
-						<em><?php _e('Comment is awaiting moderation.') ?></em>
+						<em><?php _e('Comment is awaiting moderation.','bukvar') ?></em>
 					<?php else: ?>
 						<?php comment_text() ?>
 					<?php endif; ?>
@@ -192,6 +260,10 @@
 
 
 
+
+
+
+
 	/**
 	 *
 	 * @param String $skinName Skin name
@@ -231,7 +303,7 @@
 	function bukvarGetSkins() {
 		$skinsDirPath = dirname(__FILE__).'/skins/';
 		$skinsDir = opendir($skinsDirPath);
-		$allSkins = array( array('',array('name'=>__('Do not use the skin'),'author'=>'','parent'=>'') ));
+		$allSkins = array( array('',array('name'=>__('Do not use the skin','bukvar'),'author'=>'','parent'=>'') ));
 
 		while( ($singleSkinDir = readdir($skinsDir))!==false ) {
 			if(is_dir($skinsDirPath.$singleSkinDir)  && $singleSkinDir!='.' && $singleSkinDir!='..') {
@@ -245,7 +317,7 @@
 
 	function bukvarLoadSkin() {
 		$bukvarCurrentSkin = get_option('bukvar-default-skin','default');
-		
+
 		if($bukvarCurrentSkin!='') {
 			$skinInfo = bukvarGetSkinInfo($bukvarCurrentSkin);
 
@@ -255,7 +327,7 @@
 
 			echo '<link rel="stylesheet" type="text/css" media="all" href="'.get_stylesheet_directory_uri().'/skins/'.$bukvarCurrentSkin.'/style.css" />';
 
-			
+
 
 
 			if(is_array($skinInfo['scripts']) && !empty($skinInfo['scripts'])) {
@@ -273,15 +345,33 @@
 		do_action('bukvar_header');
 	}
 
-	
+
 	function bukvarThemeOptions() {
-		add_theme_page(__('Bukvar theme settings'),
-			'<img src="'.get_stylesheet_directory_uri().'/img/theme-icon.png" /> '.__('Bukvar','bukvar').' <sup>beta</sup>',
+		add_theme_page(__('Bukvar theme settings','bukvar'),
+			__('Bukvar','bukvar').' <sup>beta</sup>',
 			'manage_options',
 			'bukvar-main-options',
 			'bukvarMainOptionsForm'
 			);
 	}
+
+
+
+
+	function bukvarDefaultOptions() {
+		$options = array(
+			'bukvar-featured-category'=>'',
+			'bukvar-show-featured-excert'=>'1',
+			'bukvar-show-extended-footer'=>'1',
+			'bukvar-show-metadata-for-pages'=>'1',
+			'bukvar-show-loginbox'=>'1',
+			'bukvar-default-skin'=>'default'
+		);
+
+		return $array;
+	}
+
+
 
 
 
@@ -293,7 +383,6 @@
 		register_setting( 'bukvar-theme-options', 'bukvar-show-metadata-for-pages' );
 
 		register_setting( 'bukvar-theme-options', 'bukvar-show-loginbox' );
-
 
 		register_setting( 'bukvar-theme-options', 'bukvar-default-skin' );
 	}
@@ -314,23 +403,28 @@
 		if(!current_user_can('manage_options'))  {
 			wp_die( __('You do not have sufficient permissions to access this page.','bukvar') );
 		}
-		
 
 
-		
-		$featuredCat = get_option('bukvar-featured-category');$featuredCat = (!$featuredCat)?0:$featuredCat;
-		$showFeaturedExcert = bukvarGetOptionValue('bukvar-show-featured-excert');
 
-		$showExtendedFooter = bukvarGetOptionValue('bukvar-show-extended-footer');
+
+		$featuredCat =		get_option('bukvar-featured-category');$featuredCat = (!$featuredCat)?0:$featuredCat;
+		$showFeaturedExcert =	bukvarGetOptionValue('bukvar-show-featured-excert');
+
+		$showExtendedFooter =	bukvarGetOptionValue('bukvar-show-extended-footer');
 		$showMetadataForPages = bukvarGetOptionValue('bukvar-show-metadata-for-pages');
-		$showLoginBox = bukvarGetOptionValue('bukvar-show-loginbox');
+		$showLoginBox =		bukvarGetOptionValue('bukvar-show-loginbox');
 
 
-		$bukvarListSkins = bukvarGetSkins();
-		$bukvarCurrentSkin = get_option('bukvar-default-skin');
-		
+		$bukvarListSkins =	bukvarGetSkins();
+		$bukvarCurrentSkin =	get_option('bukvar-default-skin');
+
 		?><?php require_once 'settings/main-settings-form.php'; ?><?php
 	}
 
-	
+
+
+	function bukvarLicenseFooter() {
+	?><?php require_once 'license.php'; ?><?php }
+
+
 ?>
