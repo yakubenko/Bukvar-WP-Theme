@@ -108,7 +108,7 @@ ul.children li div.comment-text {
 }
 ul.children li div.comment-text:hover { color: #333 }
 #respond {
-    font-size: 0.8em;
+    font-size: 1em;
     margin-bottom: 30px;
 }
 #respond h3 {

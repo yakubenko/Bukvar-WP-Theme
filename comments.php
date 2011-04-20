@@ -15,6 +15,7 @@
 		<div id="comments">
 			<ol id="comments-list">
 				<?php wp_list_comments('type=comment&callback=bukvarComments'); ?>
+				<?php //wp_list_comments('callback=bukvarComments'); ?>
 			</ol>
 		</div>
 <?php else : ?>

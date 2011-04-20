@@ -1,5 +1,9 @@
 <?php global $featuredCategory; ?>
 
+<?php $showFeaturedExcert = get_option('bukvar-show-featured-excert','0'); ?>
+
+
+
 <?php $featured = new WP_Query('cat='.$featuredCategory.'&posts_per_page=5'); ?>
 
 <?php if($featured->have_posts()): ?>
@@ -20,7 +24,7 @@
 
 			<h3 class="wp-post-title-featured"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 			<div class="wp-post-full-content-featured">
-				<?php $showFeaturedExcert = get_option('bukvar-show-featured-excert','0'); ?>
+				
 
 				<?php if($showFeaturedExcert=='1'): ?>
 				<div class="post-content">

@@ -5,7 +5,7 @@
 		<p><strong><?php _e('Bukvar settings saved','bukvar') ?></strong></p></div>
 	<?php endif; ?>
 
-	<h2><?php _e('Bukvar Theme Settings','bukvar') ?></h2>
+	<h2><?php _e('Settings for The Bukvar Theme','bukvar') ?></h2>
 
 	<form method="POST" action="options.php">
 		<?php settings_fields( 'bukvar-theme-options' ); ?>
@@ -15,7 +15,7 @@
 
 		<table class="form-table">
 			<tr valign="top">
-				<th scope="row"><?php _e('Choose your Featured category','bukvar') ?></th>
+				<th scope="row"><?php _e('Choose category with Featured posts','bukvar') ?></th>
 				<td>
 					<?php wp_dropdown_categories('name=bukvar-featured-category&hide_empty=0&selected='.$featuredCat); ?>
 				</td>
@@ -23,7 +23,7 @@
 
 
 			<tr valign="top">
-				<th scope="row"><?php _e('Show excert in Featured posts','bukvar') ?></th>
+				<th scope="row"><?php _e('Show excert in "Featured posts"','bukvar') ?></th>
 				<td>
 					<input type="checkbox" name="bukvar-show-featured-excert" value="1" <?php e($showFeaturedExcert) ?> />
 				</td>
@@ -31,7 +31,7 @@
 
 
 			<tr valign="top">
-				<th scope="row"><?php _e('Show Extended Footer','bukvar') ?></th>
+				<th scope="row"><?php _e('Show footer','bukvar') ?></th>
 				<td>
 					<input type="checkbox" name="bukvar-show-extended-footer" value="1" <?php e($showExtendedFooter) ?> />
 				</td>
@@ -47,7 +47,7 @@
 
 
 			<tr valign="top">
-				<th scope="row"><?php _e('Show Loginbox in sidebar','bukvar') ?></th>
+				<th scope="row"><?php _e('Show Login box in sidebar','bukvar') ?></th>
 				<td>
 					<input type="checkbox" name="bukvar-show-loginbox" value="1" <?php e($showLoginBox) ?> />
 				</td>
@@ -57,7 +57,7 @@
 
 
 			<tr valign="top">
-				<th scope="row"><?php _e('Choose Skin for Bukvar Theme','bukvar') ?></th>
+				<th scope="row"><?php _e('Choose deafult skin','bukvar') ?></th>
 				<td>
 					<select name="bukvar-default-skin">
 						<?php foreach ($bukvarListSkins as $skin): ?>

@@ -41,9 +41,7 @@
 	<span class="clear">&nbsp;</span>
 
 	<div id="copyright-wrapper" class="container_12">
-		<div id="copyright" class="grid_12 alpha">
-			Theme developed by Stanislav N. Yakubenko &copy; 2011 year
-		</div>
+		<?php bukvarLicenseFooter(); ?>
 	</div>
 
 	<span class="clear">&nbsp;</span>

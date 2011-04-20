@@ -1,16 +1,18 @@
 <?php while ( have_posts() ) : the_post(); ?>
+	<?php $hasThumb = has_post_thumbnail(); ?>
+
 	<div class="wp-singlepost-entry">
 		<h1 class="wp-singlepost-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 		
-		<div class="wp-singlepost-meta">
-			<?php the_author_posts_link() ?> <?php edit_post_link(__('Edit the article','bukvar'),' &mdash; ') ?><br/>
-			<?php the_date('d M Y') ?> - <a href="<?php comments_link() ?>" class="comments-link"><?php e(get_comments_number()) ?></a>
-		</div>
+		<?php bukvarPostMeta(true); ?>
 		
+		<?php if($hasThumb): ?>
+			<div class="wp-singlepost-thumb">
+				<?php the_post_thumbnail('featured-thumb'); ?>
 
-		<div class="wp-singlepost-thumb">
-			<?php the_post_thumbnail('featured-thumb'); ?>
-		</div>
+				<?php echo bukvarFeaturedImageCaption(); ?>
+			</div>
+		<?php endif; ?>
 
 		<div class="wp-post-content wp-singlepost-content">
 			<?php the_content() ?>

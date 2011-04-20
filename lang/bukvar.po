@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bukvar Wordpress Theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-07 11:37+0500\n"
+"POT-Creation-Date: 2011-04-08 11:57+0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Stanislav N. Yakubenko <stanislav.yakubenko@yandex.ru>\n"
 "Language-Team: Bukvar Theme Development team <dev@bukvar-theme.ru>\n"
@@ -81,84 +81,84 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:55
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:60
 msgid "Primary Widget Area"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:57
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:62
 msgid "The primary widget area for Bukvar journalistic Wordpress theme. Just drop your favourite widgets here."
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:66
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:71
 msgid "Firs footer column"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:68
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:73
 msgid "First footer col"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:77
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:82
 msgid "Second footer column"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:79
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:84
 msgid "Second footer col"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:88
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:93
 msgid "Third footer column"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:90
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:95
 msgid "Third footer col"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:99
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:104
 msgid "Featured posts column"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:101
-msgid "Featured widget bar"
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:106
+msgid "Widgets bar for column with Featured posts"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:123
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:130
 msgid "Newer posts"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:123
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:130
 msgid "Older posts"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:143
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:150
 msgid "Edit comment"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:145
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:152
 msgid "current comment link"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:151
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:158
 msgid "Comment is awaiting moderation."
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:183
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:195
 #: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/loops/category-loop.php:31
 msgid "Continue reading"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:219
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:241
 msgid "Do not use the skin"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:262
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:285
 msgid "Bukvar theme settings"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:263
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:286
 msgid "Bukvar"
 msgstr ""
 
-#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:299
+#: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/functions.php:334
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
@@ -167,19 +167,19 @@ msgid "Bukvar settings saved"
 msgstr ""
 
 #: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/settings/main-settings-form.php:8
-msgid "Bukvar Theme Settings"
+msgid "Settings for The Bukvar Theme"
 msgstr ""
 
 #: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/settings/main-settings-form.php:18
-msgid "Choose your Featured category"
+msgid "Choose category with Featured posts"
 msgstr ""
 
 #: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/settings/main-settings-form.php:26
-msgid "Show excert in Featured posts"
+msgid "Show excert in \"Featured posts\""
 msgstr ""
 
 #: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/settings/main-settings-form.php:34
-msgid "Show Extended Footer"
+msgid "Show footer"
 msgstr ""
 
 #: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/settings/main-settings-form.php:42
@@ -187,11 +187,11 @@ msgid "Show Metadata for Pages"
 msgstr ""
 
 #: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/settings/main-settings-form.php:50
-msgid "Show Loginbox in sidebar"
+msgid "Show Login box in sidebar"
 msgstr ""
 
 #: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/settings/main-settings-form.php:60
-msgid "Choose Skin for Bukvar Theme"
+msgid "Choose deafult skin"
 msgstr ""
 
 #: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/settings/main-settings-form.php:65
@@ -212,7 +212,7 @@ msgid "There is nothing found for your query"
 msgstr ""
 
 #: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/loops/search-loop.php:31
-msgid "We are wery sorry, but we cant find something relative to your search query."
+msgid "We are very sorry, but we cant find something relative to your search query."
 msgstr ""
 
 #: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/loops/category-loop.php:39
@@ -220,6 +220,6 @@ msgid "Category is empty"
 msgstr ""
 
 #: /home/neoline/www/wordpress-dev/wp-content/themes/bukvar/loops/category-loop.php:41
-msgid "There is no articles in the category. Use search to find something."
+msgid "No articles in this category. Use search to find something."
 msgstr ""
 

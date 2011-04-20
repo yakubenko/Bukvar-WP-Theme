@@ -162,3 +162,90 @@ h3.wp-post-title-featured a:hover {
 	color: #666;
 }
 
+
+
+.single-cat-title {
+	background: lightgoldenrodyellow;
+	color: #666;
+
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	border-left: solid 1px #d3d3d3;
+}
+
+
+div.wp-post-entry.sticky {
+	background: #e6e6e6 url('./img/sticky_bg.png') left repeat-y;
+	border-left: none;
+	border-bottom: none;
+	padding-left: 1em;
+}
+
+
+.wp-entry-author-info {
+	background: #eee;
+	padding: 0.5em;
+	padding-top: 0.8em;
+
+	width: 90%;
+	border-top: solid 2px #d3d3d3;
+}
+
+.author-bio-avatar img {
+	padding: 0.2em;
+	background: #FFF;
+	border: solid 1px #d3d3d3;
+}
+
+
+div.wp-singlepost-thumb {
+	background: #FFF;
+	padding: 0.3em;
+	padding-bottom: 0.2em;
+	width: 80%;
+}
+
+
+div.wp-singlepost-thumb img {
+	padding: 0.2em;
+	background: #FFF;
+	border: solid 1px #d3d3d3;
+}
+
+
+p.wp-singlepost-thumb-caption {
+/*	display: inline-block;*/
+
+	width: 80%;
+	font-size: 1.2em;
+	background: #FFF;
+/*	background: lightcyan;*/
+
+	margin-bottom: 0.3em;
+	margin-top: 0;
+	padding: 0.1em;
+	padding-left: 1em;
+
+	border-left: solid 1px #d3d3d3;
+
+	font-style: italic;
+
+	color: #666;
+}
+
+
+div#comments {
+	border-bottom: none;
+	margin-bottom: 2em;
+}
+
+
+div#respond p.form-allowed-tags {
+	font-size: 0.9em;
+}
+
+
+.bypostauthor span.comment-author-name {
+	color: #d40000;
+	font-weight: bold;
+}

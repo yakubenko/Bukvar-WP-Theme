@@ -1,8 +1,8 @@
 /*
 Theme Name: Bukvar
 Theme URI: http://www.bukvar-theme.ru
-Description: Avto Bukvar Theme
-Version: 0.9.9
+Description: Bukvar Theme
+Version: 0.9b1
 Author: Stanislav Yakubenko
 Author URI: http://www.bukvar-theme.ru
 */
@@ -42,7 +42,7 @@ h4 { font-family: Arial }
 }
 
 #logo a {
-    background: url("img/logo.png") right no-repeat transparent;
+    background: url("./skins/default/img/logo.png") right no-repeat transparent;
     display: block;
     height: 8.2em;
     outline: medium none;
@@ -54,7 +54,7 @@ h4 { font-family: Arial }
 }
 
 #logo-small a {
-    background: url("img/logo-small.png") right no-repeat transparent;
+    background: url("./skins/default/img/logo-small.png") right no-repeat transparent;
     display: block;
     height: 4.2em;
     outline: medium none;
@@ -119,15 +119,15 @@ h3.wp-singlepost-title a:hover {
 }
 
 
-div.wp-post-tags {
-	font-size: 1em;
+div.wp-post-tags, div.wp-post-categories {
+/*	font-size: 0.9em;*/
 	padding: 0.2em;
 	color:#666;
 	font-weight: bolder;
 }
 
 
-div.wp-post-tags a {
+div.wp-post-tags a,div.wp-post-categories a {
 	text-decoration: none;
 	border-bottom: dotted 1px;
 	font-weight: normal;
@@ -562,3 +562,45 @@ div.navigation-pages a {
 	text-decoration: none;
 	border-bottom: dotted 1px;
 }
+
+
+div#cc-license {
+	background: #FFF;
+	margin-top: 1em;
+	padding: 1em;
+	margin-bottom: 1em;
+/*	font-size: 0.4em;*/
+	color: #666;
+}
+
+div#cc-license a {
+	color: #333;
+	text-decoration: none;
+	border-bottom: dotted 1px;
+}
+
+
+div#cc-license a:hover {
+	color: #A62800;
+}
+
+div#cc-license .cc-logo {
+	float: left;
+}
+
+
+div#cc-license .cc-logo a {
+	border:none;
+}
+
+
+div#cc-license .cc-text {
+/*	float: left;*/
+	margin-left: 10em;
+}
+
+
+div#cc-license .cc-link {
+	font-weight: bold;
+}
+

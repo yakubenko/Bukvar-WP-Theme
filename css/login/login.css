@@ -16,14 +16,12 @@ body {
 }
 
 div#login h1 a {
-	background: url("./../../img/logo-small.png") right no-repeat transparent;
-/*	background: url("./../../img/small-logo-b.png") right no-repeat transparent;*/
+	background: url("./../../skins/default/img/logo-small.png") right no-repeat transparent;
 	display: block;
 	height: 3em;
 	outline: medium none;
 	text-indent: -9999px;
 	width: 13em;
-/*	    margin-bottom: 1.5em;*/
 }
 
 
