@@ -17,7 +17,7 @@
 			<tr valign="top">
 				<th scope="row"><?php _e('Choose category with Featured posts','bukvar') ?></th>
 				<td>
-					<?php wp_dropdown_categories('name=bukvar-featured-category&hide_empty=0&selected='.$featuredCat); ?>
+					<?php wp_dropdown_categories('name=bukvar-settings[bukvar-featured-category]&hide_empty=0&selected='.$featuredCat); ?>
 				</td>
 			</tr>
 
@@ -25,7 +25,7 @@
 			<tr valign="top">
 				<th scope="row"><?php _e('Show excert in "Featured posts"','bukvar') ?></th>
 				<td>
-					<input type="checkbox" name="bukvar-show-featured-excert" value="1" <?php e($showFeaturedExcert) ?> />
+					<input type="checkbox" name="bukvar-settings[bukvar-show-featured-excert]" value="1" <?php e($showFeaturedExcert) ?> />
 				</td>
 			</tr>
 
@@ -33,7 +33,7 @@
 			<tr valign="top">
 				<th scope="row"><?php _e('Show footer','bukvar') ?></th>
 				<td>
-					<input type="checkbox" name="bukvar-show-extended-footer" value="1" <?php e($showExtendedFooter) ?> />
+					<input type="checkbox" name="bukvar-settings[bukvar-show-extended-footer]" value="1" <?php e($showExtendedFooter) ?> />
 				</td>
 			</tr>
 
@@ -41,7 +41,7 @@
 			<tr valign="top">
 				<th scope="row"><?php _e('Show Metadata for Pages','bukvar') ?></th>
 				<td>
-					<input type="checkbox" name="bukvar-show-metadata-for-pages" value="1" <?php e($showMetadataForPages) ?> />
+					<input type="checkbox" name="bukvar-settings[bukvar-show-metadata-for-pages]" value="1" <?php e($showMetadataForPages) ?> />
 				</td>
 			</tr>
 
@@ -49,7 +49,7 @@
 			<tr valign="top">
 				<th scope="row"><?php _e('Show Login box in sidebar','bukvar') ?></th>
 				<td>
-					<input type="checkbox" name="bukvar-show-loginbox" value="1" <?php e($showLoginBox) ?> />
+					<input type="checkbox" name="bukvar-settings[bukvar-show-loginbox]" value="1" <?php e($showLoginBox) ?> />
 				</td>
 			</tr>
 
@@ -59,7 +59,7 @@
 			<tr valign="top">
 				<th scope="row"><?php _e('Choose deafult skin','bukvar') ?></th>
 				<td>
-					<select name="bukvar-default-skin">
+					<select name="bukvar-settings[bukvar-default-skin]">
 						<?php foreach ($bukvarListSkins as $skin): ?>
 							<?php $selectedSkin = ($bukvarCurrentSkin==$skin[0])?'selected="selected"':'' ?>
 							<?php $parent = ($skin[1]['parent']!='')?' ('.__('based on ','bukvar').$skin[1]['parent'].')':'' ?>
