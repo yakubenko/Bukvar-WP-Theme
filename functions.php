@@ -370,6 +370,15 @@
 
 		return $array;
 	}
+	
+	
+	function bukvarOldOptionsCleenup() {
+		$allOptions = bukvarDefaultOptions();
+		
+		foreach ($allOptions as $k => $v) {
+			delete_option($k);
+		}
+	}
 
 
 
@@ -385,6 +394,14 @@
 		register_setting( 'bukvar-theme-options', 'bukvar-show-loginbox' );
 
 		register_setting( 'bukvar-theme-options', 'bukvar-default-skin' );
+		
+		//register_setting( 'bukvar-theme-options', 'bukvar-settings' );
+	}
+	
+	
+	
+	function bukvarSettingsReset() {
+		
 	}
 
 
@@ -403,10 +420,7 @@
 		if(!current_user_can('manage_options'))  {
 			wp_die( __('You do not have sufficient permissions to access this page.','bukvar') );
 		}
-
-
-
-
+		
 		$featuredCat =		get_option('bukvar-featured-category');$featuredCat = (!$featuredCat)?0:$featuredCat;
 		$showFeaturedExcert =	bukvarGetOptionValue('bukvar-show-featured-excert');
 
