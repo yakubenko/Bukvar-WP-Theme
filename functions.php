@@ -320,9 +320,11 @@
 
 
 	function bukvarLoadSkin() {
-		$bukvarCurrentSkin = get_option('bukvar-default-skin','default');
-
-		if($bukvarCurrentSkin!='') {
+		global $bukvarSettings;
+		
+		if(isset($bukvarSettings['bukvar-default-skin']) && !empty($bukvarSettings['bukvar-default-skin'])) {
+			$bukvarCurrentSkin = $bukvarSettings['bukvar-default-skin'];
+			
 			$skinInfo = bukvarGetSkinInfo($bukvarCurrentSkin);
 
 			if(isset($skinInfo['parent']) && $skinInfo['parent']!='') {
@@ -426,10 +428,6 @@
 			wp_die( __('You do not have sufficient permissions to access this page.','bukvar') );
 		}
 
-		
-		// Let get our saved settings and render a form filled with them
-		//$bukvarSettings = get_option('bukvar-settings');
-		
 		
 		$featuredCat =		bukvarGetOptionValue('bukvar-featured-category',$bukvarSettings);
 		$showFeaturedExcert =	bukvarGetOptionValue('bukvar-show-featured-excert',$bukvarSettings,'checkbox');
