@@ -17,6 +17,10 @@
 	add_action('admin_menu',	'bukvarThemeOptions');
 	add_action('admin_init',	'bukvarRegisterDefaultSettings');
 
+	
+	$bukvarSettings = get_option('bukvar-settings');
+	
+	
 
 	add_action('bukvar_header','bukvarLoadSkin');
 
@@ -358,9 +362,9 @@
 
 
 
-	function bukvarDefaultOptions() {
+	function bukvarDefaultSettings() {
 		$options = array(
-			'bukvar-featured-category'=>'',
+			'bukvar-featured-category'=>'0',
 			'bukvar-show-featured-excert'=>'1',
 			'bukvar-show-extended-footer'=>'1',
 			'bukvar-show-metadata-for-pages'=>'1',
@@ -368,31 +372,47 @@
 			'bukvar-default-skin'=>'default'
 		);
 
-		return $array;
+		return $options;
 	}
+	
+	// Here we get all default settings for our Bukvar Theme
+	//$defaultBukvarSettings = bukvarDefaultSettings();
+	
 
 
 
-
-
-	function bukvarRegisterDefaultSettings() {
-		register_setting( 'bukvar-theme-options', 'bukvar-featured-category' );
-		register_setting( 'bukvar-theme-options', 'bukvar-show-featured-excert' );
-
-		register_setting( 'bukvar-theme-options', 'bukvar-show-extended-footer' );
-		register_setting( 'bukvar-theme-options', 'bukvar-show-metadata-for-pages' );
-
-		register_setting( 'bukvar-theme-options', 'bukvar-show-loginbox' );
-
-		register_setting( 'bukvar-theme-options', 'bukvar-default-skin' );
+	// Register our settings holder
+	// This function will be called via INIT hook
+	// After setting is registred we can check is setting were saved before
+	// If no, then we can reset all settings to default
+	function bukvarRegisterDefaultSettings() {		
+		register_setting('bukvar-theme-options', 'bukvar-settings');
+		
+		
+		$bukvarSettings = get_option('bukvar-settings');
+		if(!is_array($bukvarSettings) || empty($bukvarSettings)) {
+			bukvarResetSettings();
+		}
 	}
+	
+	
+	
+	function bukvarResetSettings() {
+		update_option('bukvar-settings', bukvarDefaultSettings());
+	}
+	
+	
 
 
-
-
-	function bukvarGetOptionValue($option='',$optionType='checkbox') {
-		$option = get_option($option);
-		$option = ($option=='1')?'checked="checked"':'';
+	function bukvarGetOptionValue($option,$options,$optionType='value') {
+		
+		$option = (isset($options[$option]))?$option = $options[$option]:'';
+		
+		switch($optionType) {
+			case 'checkbox':
+				$option = ($option=='1')?'checked="checked"':'';
+		}
+		
 		return $option;
 	}
 
@@ -400,23 +420,27 @@
 
 
 	function bukvarMainOptionsForm() {
+		global $bukvarSettings;
+		
 		if(!current_user_can('manage_options'))  {
 			wp_die( __('You do not have sufficient permissions to access this page.','bukvar') );
 		}
 
+		
+		// Let get our saved settings and render a form filled with them
+		//$bukvarSettings = get_option('bukvar-settings');
+		
+		
+		$featuredCat =		bukvarGetOptionValue('bukvar-featured-category',$bukvarSettings);
+		$showFeaturedExcert =	bukvarGetOptionValue('bukvar-show-featured-excert',$bukvarSettings,'checkbox');
 
-
-
-		$featuredCat =		get_option('bukvar-featured-category');$featuredCat = (!$featuredCat)?0:$featuredCat;
-		$showFeaturedExcert =	bukvarGetOptionValue('bukvar-show-featured-excert');
-
-		$showExtendedFooter =	bukvarGetOptionValue('bukvar-show-extended-footer');
-		$showMetadataForPages = bukvarGetOptionValue('bukvar-show-metadata-for-pages');
-		$showLoginBox =		bukvarGetOptionValue('bukvar-show-loginbox');
+		$showExtendedFooter =	bukvarGetOptionValue('bukvar-show-extended-footer',$bukvarSettings,'checkbox');
+		$showMetadataForPages = bukvarGetOptionValue('bukvar-show-metadata-for-pages',$bukvarSettings,'checkbox');
+		$showLoginBox =		bukvarGetOptionValue('bukvar-show-loginbox',$bukvarSettings,'checkbox');
 
 
 		$bukvarListSkins =	bukvarGetSkins();
-		$bukvarCurrentSkin =	get_option('bukvar-default-skin');
+		$bukvarCurrentSkin =	bukvarGetOptionValue('bukvar-default-skin',$bukvarSettings);
 
 		?><?php require_once 'settings/main-settings-form.php'; ?><?php
 	}
