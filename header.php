@@ -53,7 +53,7 @@
 				</div>
 
 				<div class="grid_6 alpha" id="banner">
-					<img src="<?php bloginfo( 'template_directory' ); ?>/img/header_advert.jpg" alt="" />
+<!--					<img src="<?php bloginfo( 'template_directory' ); ?>/img/header_advert.jpg" alt="" />-->
 				</div>
 
 			<?php else: ?>
@@ -62,7 +62,7 @@
 				</div>
 
 				<div class="grid_9 alpha banner-small" id="banner">
-					<img src="<?php bloginfo( 'template_directory' ); ?>/img/header_advert.jpg" alt="" />
+<!--					<img src="<?php bloginfo( 'template_directory' ); ?>/img/header_advert.jpg" alt="" />-->
 				</div>
 			<?php endif; ?>
 

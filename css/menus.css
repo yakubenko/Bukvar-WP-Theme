@@ -13,10 +13,10 @@ div.menu-hr-box ul  {
 
 div.menu-hr-box ul li {
 	position: relative;
-    list-style: none;
-    display: inline-block;
-    margin: 0 15px 0 0;
-    height: 30px;
+	list-style: none;
+	display: inline-block;
+	 margin: 0 15px 0 0;
+	height: 30px;
 }
 
 div.menu-hr-box ul li a {
@@ -46,10 +46,11 @@ div.menu-hr-box ul li.current-menu-item a {
 div.menu-hr-box ul li ul.sub-menu, div.menu-hr-box ul li ul.children {
     display: none;
     position: absolute;
-/*    top: auto;*/
     top: auto;
     left: 0;
 }
+
+
 div.menu-hr-box ul li:hover ul.sub-menu, div.menu-hr-box ul li:hover ul.children {
     display: block;
     z-index: 999;
@@ -79,6 +80,36 @@ div.menu-hr-box ul li:hover ul.sub-menu li a, div.menu-hr-box ul li:hover ul.chi
 }
 
 
+div.menu-hr-box ul.sub-menu li>ul.sub-menu {
+	display: none;
+}
+
+
+div.menu-hr-box ul.sub-menu li:hover>ul.sub-menu {
+	display: block;
+	
+	position: absolute;
+	top: 2px;
+	left: 167px;
+}
+
+
+div.menu-hr-box ul.sub-menu li:hover ul.sub-menu li a {
+	background: #666;
+	color: #FFF;
+	text-shadow: none;
+	border-left: solid 1px #FFF;
+}
+
+
+div.menu-hr-box ul.sub-menu li:hover ul.sub-menu li a:hover {
+	background: #666;
+	color: #FFF;
+	text-decoration: none;
+}
+
+
+
 div.menu-hr-box ul li:hover ul.sub-menu li a:hover, div.menu-hr-box ul li:hover ul.children li a:hover {
 	text-decoration: none;
 	background:#ededff;
@@ -92,48 +123,4 @@ div.menu-hr-box.footer-menu {
 	border: none;
 }
 
-
-
-
-
-/*div.menu-hr-box {
-    margin-bottom: 20px;
-    text-align: center;
-    border-bottom: solid 1px #EEEEEE;
-}
-
-div.menu-hr-box.left { text-align: left }
-
-div.menu-hr-box ul.default-hr-box-menu, div.menu-hr-box ul  {
-    display: inline;
-    list-style: none;
-}
-
-div.menu-hr-box ul.default-hr-box-menu li, div.menu-hr-box ul li {
-    list-style: none;
-    display: inline;
-    margin: 0 15px 0 0;
-    height: 30px;
-}
-
-div.menu-hr-box ul.default-hr-box-menu li a {
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    line-height: 30px;
-    text-transform: uppercase;
-    padding: 0 8px 0 8px;
-    font-size: 1.1em;
-    font-family: Verdana;
-    color: #333;
-}
-
-div.menu-hr-box ul.default-hr-box-menu li:hover { background: #FFF }
-
-div.menu-hr-box ul.default-hr-box-menu li a:hover { color:#333;background: #eee;text-shadow:0px 0px 4px #FFF; }
-
-div.menu-hr-box ul.default-hr-box-menu li.current-menu-item a {
-    text-decoration: underline;
-        color: #6D87D6;
-}*/
 

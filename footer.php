@@ -1,11 +1,12 @@
+	<?php global $bukvarSettings; ?>
 	<span class="clear">&nbsp;</span>
 	</div>
 
 
 	<span class="clear">&nbsp;</span>
 
-	<?php $showExtendedFooter = get_option('bukvar-show-extended-footer'); ?>
-	<?php if($showExtendedFooter=='1'): ?>
+	
+	<?php if($bukvarSettings['bukvar-show-extended-footer']=='1'): ?>
 	<div id="extended-footer-wrapper" class="container_12">
 		<div class="grid_3 footer-col omega" id="first-footer-col">
 			<ul id="primary-widget-area">

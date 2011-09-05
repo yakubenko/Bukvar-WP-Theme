@@ -1,8 +1,7 @@
 <?php get_header(); ?>
 
 	<?php
-		$featuredCategory = get_option('bukvar-featured-category',0);
-//		$featuredCategory = ($featuredCategory)?$featuredCategory:0;
+		$featuredCategory = $bukvarSettings['bukvar-featured-category'];
 	?>
 
 	<div class="featured-posts-list grid_5 alpha content-column" id="featured-posts">

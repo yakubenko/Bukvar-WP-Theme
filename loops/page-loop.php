@@ -1,4 +1,5 @@
 <?php while ( have_posts() ) : the_post(); ?>
+	<?php $hasThumb = has_post_thumbnail(); ?>
 	<div class="wp-singlepost-entry">
 		<h1 class="wp-singlepost-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
@@ -11,9 +12,13 @@
 		<?php endif; ?>
 
 
-		<div class="wp-singlepost-thumb">
-			<?php the_post_thumbnail('featured-thumb'); ?>
-		</div>
+		<?php if($hasThumb): ?>
+			<div class="wp-singlepost-thumb">
+				<?php the_post_thumbnail('featured-thumb'); ?>
+
+				<?php echo bukvarFeaturedImageCaption(); ?>
+			</div>
+		<?php endif; ?>
 
 		<div class="wp-singlepost-content">
 			<?php the_content() ?>

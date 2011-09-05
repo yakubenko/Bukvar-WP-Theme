@@ -3,7 +3,7 @@
 	// Internationalization loading
 	// You can create your own translation. Just fork *.po file from lang folder
 	// You can use this filter to test your translation
-	//add_filter( 'locale', 'bukvarSetLocale' );
+	add_filter( 'locale', 'bukvarSetLocale' );
 	load_theme_textdomain('bukvar', dirname(__FILE__).'/lang/');
 
 
@@ -11,18 +11,21 @@
 	add_editor_style('css/editor-stylesheet.css');
 
 	add_action( 'init',		'bukvarRegMenus' );
-	add_filter('excerpt_length',	'bukvarExcertLength');
-	add_filter('pre_get_posts',	'bukvarSearchFilter');
-	add_action('login_head',	'bukvarCustomLoginCss');
-	add_action('admin_menu',	'bukvarThemeOptions');
-	add_action('admin_init',	'bukvarRegisterDefaultSettings');
+	add_filter( 'excerpt_length',	'bukvarExcertLength');
+	add_filter( 'pre_get_posts',	'bukvarSearchFilter');
+	add_action( 'login_head',	'bukvarCustomLoginCss');
+	add_action( 'admin_menu',	'bukvarThemeOptions');
+	add_action( 'admin_init',	'bukvarRegisterDefaultSettings');
+	// You can comment it if you need to display your generator meta tag
+	remove_action('wp_head', 'wp_generator');
 
 	
+	// @todo: Create function to fill empty settings keys
 	$bukvarSettings = get_option('bukvar-settings');
 	
 	
-
-	add_action('bukvar_header','bukvarLoadSkin');
+	add_action( 'bukvar_header','bukvarLoadSkin' );
+	add_action( 'bukvar_header','bukvarLoadFavicon' );
 
 
 	if ( function_exists( 'add_image_size' ) ) {
@@ -137,7 +140,11 @@
 	}
 
 
-
+	/**
+	 *
+	 * @global object $post 
+	 * displaying post tags and categories
+	 */
 	function bukvarPostTagsAndCats() {
 		global $post;
 		?>
@@ -154,27 +161,40 @@
 
 
 
+	/**
+	 *
+	 * @global object $post
+	 * @param boolean $single  is displaying on a single page
+	 */
 	function bukvarPostMeta($single=false) {
 		global $post;?>
 
 		<?php if(!$single): ?>
 			<div class="wp-post-meta">
 				<?php _e('By','bukvar') ?> <?php the_author_posts_link() ?><br/>
-				<?php the_date() ?> - <a href="<?php comments_link() ?>" class="comments-link">
+				<?php the_time(get_option('date_format')) ?> - <a href="<?php comments_link() ?>" class="comments-link">
 					<?php e(get_comments_number()) ?>
 				</a>
 			</div>
 		<?php else: ?>
 			<div class="wp-singlepost-meta">
 				<?php _e('By','bukvar') ?> <?php the_author_posts_link() ?> <?php edit_post_link(__('Edit the article','bukvar'),' &mdash; ') ?><br/>
-				<?php the_date() ?> - <a href="<?php comments_link() ?>" class="comments-link"><?php e(get_comments_number()) ?></a>
+				<?php the_date(get_option('date_format')) ?> - <a href="<?php comments_link() ?>" class="comments-link"><?php e(get_comments_number()) ?></a>
 			</div>
 		<?php endif; ?>
 	<?php
 	}
 
 
-
+	/**
+	 *
+	 * @global object $post current post
+	 * @return string
+	 * 
+	 * returns classname for post content. Empty if post has a thumbnail image
+	 * and 'no-thumb' if there is no thumbnail for the post
+	 * you can use this classname to add left|right margins or other CSS stuff for wp-post-content block 
+	 */
 	function bukvarNoThumbClass() {
 		global $post;
 		return (has_post_thumbnail())?'':'no-thumb';
@@ -184,6 +204,9 @@
 
 
 
+	/**
+	 * Here we can get caption of first attachment for post
+	 */
 	// http://wordpress.org/support/topic/featured-image-display-image-caption
 	function bukvarFeaturedImageCaption() {
 		  global $post;
@@ -245,8 +268,22 @@
 	}
 
 
+	/**
+	 *
+	 * @global array $bukvarSettings 
+	 */
 	function bukvarCustomLoginCss() {
+		global $bukvarSettings;
 		e('<link rel="stylesheet" type="text/css" href="'.get_bloginfo('template_directory').'/css/login/login.css" />');
+		
+		if(!empty($bukvarSettings['bukvar-default-skin'])) {
+			$cssFile = dirname(__FILE__).'/skins/'.$bukvarSettings['bukvar-default-skin'].'/login.css';
+			$cssFileURL = get_bloginfo('template_directory').'/skins/'.$bukvarSettings['bukvar-default-skin'].'/login.css';
+			
+			if(file_exists($cssFile)) {
+				e('<link rel="stylesheet" type="text/css" href="'.$cssFileURL.'" />');
+			}
+		}
 	}
 
 
@@ -262,10 +299,24 @@
 	}
 
 
-
-
-
-
+	
+	function isChildTheme() {
+		// Директория по умолчанию
+		$skinDirectory = dirname(__FILE__);
+		// Если директория по умлочанию не совпадает с get_stylesheet_directory, то
+		// есть основание полагать, что используется дочерняя тема.
+		if($skinDirectory!=get_stylesheet_directory()) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	
+	function getSkinsDirectory() {
+		$skinsDirectory = (!isChildTheme())?dirname(__FILE__):get_stylesheet_directory();
+		return $skinsDirectory.'/skins/';
+	}
 
 
 	/**
@@ -281,15 +332,13 @@
 		    'parent' => 'Parent',
 		    'scripts' => 'Scripts'
 		);
-
-		$skinInfo = get_file_data(dirname(__FILE__).'/skins/'.$skinName.'/style.css', $default_headers);
-
-		// Dirty trick I know
-		$skinInfo['scripts'].=',';
+		
+		
+		$skinInfo = get_file_data(getSkinsDirectory().$skinName.'/style.css', $default_headers);
 		$scriptsToLoad = explode(',',$skinInfo['scripts']);
 
 		for($i=0;$i<=count($scriptsToLoad)-1;$i++) {
-			if(trim($scriptsToLoad[$i])==='') {
+			if(trim($scriptsToLoad[$i])=='') {
 				unset($scriptsToLoad[$i]);
 			}
 		}
@@ -305,15 +354,36 @@
 	 * @return Array Return an Array of all installed skins
 	 */
 	function bukvarGetSkins() {
-		$skinsDirPath = dirname(__FILE__).'/skins/';
+		// @TODO: Сделать возможность создавать скины в дочерней теме
+		// Необходимо заменить $skinDirPath на путь к текущей теме.
+//		$skinsDirPath = dirname(__FILE__).'/skins/';
+		$skinsDirPath = getSkinsDirectory();
+//		$childThemeSkinsDir = get_stylesheet_directory().'/skins/';
+		
+		
 		$skinsDir = opendir($skinsDirPath);
+//		$childSkinsDir = opendir($childThemeSkinsDir);
+		
 		$allSkins = array( array('',array('name'=>__('Do not use the skin','bukvar'),'author'=>'','parent'=>'') ));
+		
+		
+		
 
 		while( ($singleSkinDir = readdir($skinsDir))!==false ) {
 			if(is_dir($skinsDirPath.$singleSkinDir)  && $singleSkinDir!='.' && $singleSkinDir!='..') {
 				$allSkins[] = array($singleSkinDir,bukvarGetSkinInfo($singleSkinDir));
 			}
 		}
+		
+		
+//		while( ($singleSkinDir = readdir($childSkinsDir))!==false ) {
+//			if(is_dir($childThemeSkinsDir.$singleSkinDir)  && $singleSkinDir!='.' && $singleSkinDir!='..') {
+//				$allSkins[] = array($singleSkinDir,bukvarGetSkinInfo($singleSkinDir,true));
+//			}
+//		}
+		
+		
+		
 		return $allSkins;
 	}
 
@@ -342,6 +412,28 @@
 				}
 			}
 		}
+	}
+	
+	
+	/**
+	 *
+	 * @global array $bukvarSettings
+	 * Loads favicon for your site. It can use favicon.ico located in the skin folder
+	 * or located in /favicon.ico (web site root) 
+	 */
+	function bukvarLoadFavicon() {
+		global $bukvarSettings;
+		
+		$skinsdir = dirname(__FILE__).'/skins/';
+		$favicon = home_url().'/favicon.ico';
+		
+		if(isset($bukvarSettings['bukvar-default-skin'])) {
+			if(file_exists($skinsdir.$bukvarSettings['bukvar-default-skin'].'/favicon.ico')) {
+				$favicon = get_stylesheet_directory_uri().'/skins/'.$bukvarSettings['bukvar-default-skin'].'/favicon.ico';
+			}
+		}
+		
+		e('<link rel="shortcut icon" type="image/x-icon" href="'.$favicon.'" />');
 	}
 
 

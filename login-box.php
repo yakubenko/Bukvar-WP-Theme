@@ -1,6 +1,6 @@
-<?php $showLoginBox = get_option('bukvar-show-loginbox','0') ?>
+<?php global $bukvarSettings; ?>
 
-<?php if($showLoginBox=='1'): ?>
+<?php if($bukvarSettings['bukvar-show-loginbox']=='1'): ?>
 <div id="login-box">
 	<?php _e('You on the blog:','bukvar') ?>
 	<ul class="login-links">

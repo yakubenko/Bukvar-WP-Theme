@@ -5,9 +5,7 @@
 
 html,body {
 	background: #eee;
-/*	color: pink;*/
 	background: url('./img/karachi.gif');
-/*	background: url('./img/hearts.jpg');*/
 }
 
 #main-wrapper {
